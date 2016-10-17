@@ -8,8 +8,7 @@
 
 #import "ViewController.h"
 #import "AWCameraView.h"
-
-@import Photos;
+#import "SendPhotoViewController.h"
 
 @interface ViewController () <AWCameraViewDelegate>
 
@@ -22,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCounter;
 @property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
 @property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
+
+@property (strong, nonatomic) UIImage *finalImage;
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -160,6 +161,8 @@
 }
 
 - (void)startPhotoShoot {
+    self.finalImage = nil;
+
     self.cameraView.delegate = self;
     self.cameraView.position = AWCameraViewPositionFront;
     
@@ -248,43 +251,18 @@
 
     [self hideButtons:YES];
 
+    self.finalImage = [self takeScreenshot:self.view];
     [self saveToCameraRoll:[self takeScreenshot:self.view]];
 }
 
 
-//- (void)fetchLastImageFromCameraRoll {
-//    __weak typeof(self) weakSelf = self;
-//
-//    PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
-//    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-//    PHFetchResult *fetchResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:fetchOptions];
-//    PHAsset *lastAsset = [fetchResult lastObject];
-//    [[PHImageManager defaultManager] requestImageForAsset:lastAsset
-//                                               targetSize:self.imageView2.bounds.size
-//                                              contentMode:PHImageContentModeAspectFit
-//                                                  options:PHImageRequestOptionsVersionCurrent
-//                                            resultHandler:^(UIImage *result, NSDictionary *info) {
-//
-//                                                if (result.scale == 1.0f) {
-//                                                    self.imageView2.image = result;
-//                                                    //                                                    UIImage *image = [weakSelf combineImages:result];
-//
-//                                                    UIImage *newImage = [weakSelf imageByCombiningImage:self.imageView2.image withImage:weakSelf.imageView3.image];
-//                                                    self.imageView.image = newImage;
-//
-//                                                    UIImageWriteToSavedPhotosAlbum(newImage,nil,nil,nil);
-//                                                }
-//
-//
-//
-//                                                //                                                dispatch_async(dispatch_get_main_queue(), ^{
-//                                                //
-//                                                //                                                    //re: do something here
-//                                                //                                                    [weakSelf combineImages:result];
-//                                                //                                                });
-//                                            }];
-//    
-//}
+#pragma mark - Navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    SendPhotoViewController *vc = [segue destinationViewController];
+    vc.imageToSend = self.finalImage;
+
+}
 
 @end

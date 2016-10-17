@@ -12,7 +12,7 @@
 
 #pragma mark - Alert Controller Messages
 
-+ (void)showAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message {
++ (void)showAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
 
     UIAlertController *alert=   [UIAlertController
                                  alertControllerWithTitle:title
@@ -25,6 +25,9 @@
                          handler:^(UIAlertAction * action)
                          {
                              [alert dismissViewControllerAnimated:YES completion:nil];
+                             if (completionHandler) {
+                                 completionHandler();
+                             }
 
                          }];
 

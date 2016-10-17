@@ -111,6 +111,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="emailPhotosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B1x-Nr-qul"/>
+                                    <segue destination="nf5-c7-zAW" kind="show" id="UYz-10-pLu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hac-cb-iL2">
@@ -179,23 +180,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jma-sR-VZB">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="459" id="ruq-Kb-Z7q"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankYou" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-9Z-dws"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94166773560000006" green="0.38437581059999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jma-sR-VZB" firstAttribute="top" secondItem="Jax-NW-rSs" secondAttribute="bottom" constant="227" id="25U-3S-nel"/>
-                            <constraint firstItem="jma-sR-VZB" firstAttribute="leading" secondItem="P30-p9-lum" secondAttribute="leading" constant="163" id="KH5-kZ-RCh"/>
+                            <constraint firstAttribute="trailing" secondItem="5X9-9Z-dws" secondAttribute="trailing" id="Gpk-jb-ci1"/>
+                            <constraint firstItem="OWV-lK-nyA" firstAttribute="top" secondItem="5X9-9Z-dws" secondAttribute="bottom" id="mYk-S1-kv0"/>
+                            <constraint firstItem="5X9-9Z-dws" firstAttribute="leading" secondItem="P30-p9-lum" secondAttribute="leading" id="pcV-Hv-YcC"/>
+                            <constraint firstItem="5X9-9Z-dws" firstAttribute="top" secondItem="P30-p9-lum" secondAttribute="top" id="sIw-Pd-5TF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageViewThankYou" destination="5X9-9Z-dws" id="0jO-Hm-CnG"/>
+                        <segue destination="Ata-0e-MCX" kind="unwind" identifier="unwindToIntroScreen" unwindAction="unWindToIntroScreen:" id="xBa-Tp-2lc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJB-EL-lxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ata-0e-MCX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1237.5" y="140.625"/>
         </scene>
@@ -209,5 +210,6 @@
         <image name="placeholder3" width="178" height="237"/>
         <image name="retakePhotos" width="56" height="274"/>
         <image name="tapHere2" width="380" height="44"/>
+        <image name="thankYou" width="1029" height="772"/>
     </resources>
 </document>

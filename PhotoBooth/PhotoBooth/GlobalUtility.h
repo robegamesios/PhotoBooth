@@ -19,4 +19,8 @@ typedef void(^ErrorBlock)(NSString *errorString);
 
 @interface GlobalUtility : NSObject
 
++ (void)showAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler;
+
++ (void)showConfirmAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle cancelButtonTitle:(NSString *)cancelButtonTitle completionHandler:(VoidBlock)completionHandler;
+
 @end

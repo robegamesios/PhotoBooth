@@ -10,4 +10,6 @@
 
 @interface SendPhotoViewController : UIViewController
 
+@property (strong, nonatomic) UIImage *imageToSend;
+
 @end
