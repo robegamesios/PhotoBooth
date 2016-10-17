@@ -13,12 +13,16 @@
 
 @interface ViewController () <AWCameraViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewBg;
 @property (weak, nonatomic) IBOutlet AWCameraView *cameraView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview4;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCounter;
+@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
+
 @property (strong, nonatomic) NSTimer *timer;
 
 @end
@@ -30,15 +34,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self hideButtons:YES];
+    [self hideElements:YES];
+
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    [self startPhotoShoot];
+    __weak typeof(self) weakSelf = self;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [weakSelf hideElements:NO];
+        [weakSelf startPhotoShoot];
+    });
 }
 
+
+#pragma mark - Helpers
+
+- (void)hideElements:(BOOL)status {
+    self.imageViewBg.hidden = status;
+    self.cameraView.hidden = status;
+    self.imageViewPreview.hidden = status;
+    self.imageViewPreview2.hidden = status;
+    self.imageViewPreview3.hidden = status;
+    self.imageViewPreview4.hidden = status;
+    self.imageViewCounter.hidden = status;
+}
+
+- (void)hideButtons:(BOOL)status {
+    self.retakePhotosButton.hidden = status;
+    self.emailPhotosButton.hidden = status;
+}
+
+- (void)takePhotoBlock {
+    __weak typeof(self) weakSelf = self;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [weakSelf.cameraView retakePicture];
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [weakSelf startCameraTimer];
+        });
+    });
+}
 
 #pragma mark - Timers
 
@@ -136,45 +183,36 @@
 
 - (void)cameraView:(AWCameraView *)cameraView didFinishTakingPicture:(UIImage *)image withInfo:(NSDictionary *)info {
 
-    __weak typeof(self) weakSelf = self;
-
     static int counter = 0;
-
-    void(^block)(void) = ^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [weakSelf.cameraView retakePicture];
-
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                [weakSelf startCameraTimer];
-            });
-        });
-    };
 
     UIImage *rotatedImage = [self rotateImage:image];
 
     switch (counter) {
         case 0:
             self.imageViewPreview.image = rotatedImage;
-            block();
+            [self takePhotoBlock];
             counter = 1;
             break;
 
         case 1:
             self.imageViewPreview2.image = rotatedImage;
-            block();
+            [self takePhotoBlock];
             counter = 2;
             break;
 
         case 2:
             self.imageViewPreview3.image = rotatedImage;
-            block();
+            [self takePhotoBlock];
             counter = 3;
             break;
 
         case 3:
-            counter = 0;
+            self.cameraView.hidden = YES;
             self.imageViewPreview4.image = rotatedImage;
-            [self saveToCameraRoll:[self takeScreenshot:self.view]];
+
+            [self hideButtons:NO];
+            counter = 0;
+
             break;
 
         default:
@@ -190,6 +228,28 @@
 }
 
 
+#pragma mark - IBActions
+
+- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
+
+    [self hideButtons:YES];
+    self.cameraView.hidden = NO;
+
+    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder1"];
+    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder2"];
+    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder3"];
+    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
+
+    [self takePhotoBlock];
+}
+
+- (IBAction)emailPhotosButtonTapped:(UIButton *)sender {
+    self.cameraView.hidden = YES;
+
+    [self hideButtons:YES];
+
+    [self saveToCameraRoll:[self takeScreenshot:self.view]];
+}
 
 
 //- (void)fetchLastImageFromCameraRoll {
