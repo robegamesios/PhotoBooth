@@ -70,4 +70,28 @@
     [navigationController presentViewController:alert animated:YES completion:nil];
 }
 
++ (void)showAlert:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
+
+    UIAlertController *alert=   [UIAlertController
+                                 alertControllerWithTitle:title
+                                 message:message
+                                 preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+
+                             if (completionHandler) {
+                                 completionHandler();
+                             }
+                         }];
+
+    [alert addAction:ok];
+
+    [viewController presentViewController:alert animated:YES completion:nil];
+}
+
 @end

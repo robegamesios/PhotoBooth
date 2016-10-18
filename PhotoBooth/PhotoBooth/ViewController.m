@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AWCameraView.h"
 #import "SendPhotoViewController.h"
+#import "GlobalUtility.h"
 
 @interface ViewController () <AWCameraViewDelegate>
 
@@ -101,7 +102,7 @@
 #pragma mark - Timers
 
 - (void)startCameraTimer {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                      target:self
                                    selector:@selector(updateTimer)
                                    userInfo:nil
@@ -191,7 +192,7 @@
     [UIScreen mainScreen].brightness = 0.5f;
     self.flashView.alpha = 1.0f;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [UIScreen mainScreen].brightness = 1.0f;
 
         [self.cameraView takePicture];
@@ -259,7 +260,8 @@
 - (void)cameraView:(AWCameraView *)cameraView didErrorOnTakePicture:(NSError *)error {
 
     if (error) {
-
+        NSString *message = @"Oops! Unable to take your pic. Please try again";
+        [GlobalUtility showAlert:self title:nil message:message completionHandler:nil];
     }
 }
 
@@ -295,7 +297,6 @@
 
     SendPhotoViewController *vc = [segue destinationViewController];
     vc.imageToSend = self.finalImage;
-
 }
 
 @end

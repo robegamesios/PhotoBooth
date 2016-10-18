@@ -49,13 +49,16 @@
 
     emailDialog.mailComposeDelegate = self;
 
-    NSString *htmlMsg = @"<html><body><p>Baby Micko had an amazing time at his first birthday!<br>Thank you for making his day wonderful with your warm presence, thoughtful gift, and kind words.<br>Thanks a lot!! <br><br>Rob & Joy</p></body></html>";
+    NSString *htmlMsg = @"<html><body><p>Baby Micko had an amazing time at his first birthday!<br>Thank you for making his day wonderful with your warm presence, thoughtful gift, and kind words.<br><br>Sincerely,<br>Rob & Joy</p></body></html>";
 
     NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(emailImage, 1.0)];
 
     NSString *fileName = @"photo";
     fileName = [fileName stringByAppendingPathExtension:@"jpeg"];
-    [emailDialog addAttachmentData:jpegData mimeType:@"image/jpeg" fileName:fileName];
+
+    if (jpegData) {
+        [emailDialog addAttachmentData:jpegData mimeType:@"image/jpeg" fileName:fileName];
+    }
 
     [emailDialog setSubject:@"Micko's 1st Birthday Party Photobooth pic"];
     [emailDialog setMessageBody:htmlMsg isHTML:YES];
@@ -72,41 +75,44 @@
 
     NSString *message = nil;
 
-    switch (result) {
+    if (error) {
+        message = @"Oops! Failed to send photo, please try again";
 
-        case MFMailComposeResultCancelled:
-            NSLog(@"email canceled");
-            message = @"Cancaled sending photo, try again, it's fun!";
-            break;
+    } else {
+        switch (result) {
 
-        case MFMailComposeResultSaved:
-            NSLog(@"email saved");
-            message = @"Photo saved, we will send your photobooth pic soon :)";
-            break;
+            case MFMailComposeResultCancelled:
+                NSLog(@"email canceled");
+                message = @"Canceled sending photo, try again, it's fun!";
+                break;
 
-        case MFMailComposeResultSent:
-            NSLog(@"email sent");
-            message = @"Photo sent, thanks for attending the party! :)";
+            case MFMailComposeResultSaved:
+                NSLog(@"email saved");
+                message = @"Photo saved, we will send your photobooth pic soon :)";
+                break;
 
-            break;
-        case MFMailComposeResultFailed:
-            NSLog(@"email sent failure: %@", [error localizedDescription]);
-            message = @"Failed to send photo, we will send your photobooth pic soon :)";
+            case MFMailComposeResultSent:
+                NSLog(@"email sent");
+                message = @"Photo sent, thanks for attending the party! :)";
 
-            break;
-
-        default:
-            break;
+                break;
+            case MFMailComposeResultFailed:
+                NSLog(@"email sent failure: %@", [error localizedDescription]);
+                message = @"Failed to send photo, we will send your photobooth pic soon :)";
+                
+                break;
+                
+            default:
+                break;
+        }
     }
-
 
     self.imageViewThankYou.hidden = NO;
 
     // Close the Mail Interface
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
-    [self showAlertWithTitle:nil message:message completionHandler:^{
+    [GlobalUtility showAlert:self title:nil message:message completionHandler:^{
         [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
     }];
 }
@@ -134,29 +140,5 @@
 //                                            }];
 //}
 
-- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
-
-    UIAlertController *alert=   [UIAlertController
-                                 alertControllerWithTitle:title
-                                 message:message
-                                 preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-
-                             if (completionHandler) {
-                                 completionHandler();
-                             }
-                         }];
-    
-    [alert addAction:ok];
-
-    [self presentViewController:alert animated:YES completion:nil];
-
-}
 
 @end
