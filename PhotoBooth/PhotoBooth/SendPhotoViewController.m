@@ -29,10 +29,16 @@
 
     self.imageViewThankYou.hidden = YES;
 
-    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
-    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
-
     [self showEmail:self.imageToSend];
+}
+
+// Lock orientation
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeRight;
+}
+
+-(NSUInteger)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController {
+    return UIInterfaceOrientationMaskLandscapeRight;
 }
 
 

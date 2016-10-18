@@ -43,9 +43,6 @@
 
     [self hideButtons:YES];
     [self hideElements:YES];
-
-    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
-    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -57,6 +54,15 @@
         [weakSelf hideElements:NO];
         [weakSelf startPhotoShoot];
     });
+}
+
+// Lock orientation
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+-(NSUInteger)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 
