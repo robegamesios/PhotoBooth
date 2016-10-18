@@ -23,4 +23,6 @@ typedef void(^ErrorBlock)(NSString *errorString);
 
 + (void)showConfirmAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle cancelButtonTitle:(NSString *)cancelButtonTitle completionHandler:(VoidBlock)completionHandler;
 
++ (void)showAlert:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler;
+
 @end
