@@ -127,6 +127,11 @@
                                     <action selector="retakePhotosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oKJ-zJ-GQH"/>
                                 </connections>
                             </button>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vPo-s0-hCB">
+                                <frame key="frameInset" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94166773560000006" green="0.38437581059999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -155,6 +160,7 @@
                     <connections>
                         <outlet property="cameraView" destination="ChX-1i-Wfj" id="jQF-df-ran"/>
                         <outlet property="emailPhotosButton" destination="e6t-WB-Uwf" id="RlA-OW-hzS"/>
+                        <outlet property="flashView" destination="vPo-s0-hCB" id="exe-EC-Xa9"/>
                         <outlet property="imageViewBg" destination="pXN-w9-eB4" id="5RT-MB-1fJ"/>
                         <outlet property="imageViewCounter" destination="Bq8-Bb-JQq" id="Q7o-wK-1Pp"/>
                         <outlet property="imageViewPreview" destination="RN9-oF-dsP" id="Vvh-jS-n9p"/>

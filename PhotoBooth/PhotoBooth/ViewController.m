@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCounter;
 @property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
 @property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
+@property (weak, nonatomic) IBOutlet UIView *flashView;
 
 @property (strong, nonatomic) UIImage *finalImage;
 
@@ -62,6 +63,8 @@
 #pragma mark - Helpers
 
 - (void)hideElements:(BOOL)status {
+    self.flashView.alpha = 0.0f;
+
     self.imageViewBg.hidden = status;
     self.cameraView.hidden = status;
     self.imageViewPreview.hidden = status;
@@ -87,6 +90,7 @@
         });
     });
 }
+
 
 #pragma mark - Timers
 
@@ -120,7 +124,8 @@
 
         case 3:
             self.imageViewCounter.image = nil;
-            [self.cameraView takePicture];
+
+            [self takePhoto];
             [self.timer invalidate];
             self.timer = nil;
             time = 0;
@@ -176,6 +181,28 @@
 //    [cameraView focusOnPoint:CGPointMake(1, 1)];
 }
 
+- (void)takePhoto {
+    [UIScreen mainScreen].brightness = 0.5f;
+    self.flashView.alpha = 1.0f;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [UIScreen mainScreen].brightness = 1.0f;
+
+        [self.cameraView takePicture];
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration: 0.5f
+                             animations: ^{
+                                 self.flashView.alpha = 0.0f;
+                                 [UIScreen mainScreen].brightness = 0.6f;
+
+                             }
+                             completion: ^(BOOL finished) {
+                             }
+             ];
+        });
+    });
+}
 
 #pragma mark - AWCameraViewDelegate methods
 
