@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2FE390511D5E24E39B43FFC4 /* libPods-PhotoBooth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */; };
 		562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 562455841DB49EC40071A4B3 /* GlobalUtility.m */; };
+		5624558B1DB4A6A00071A4B3 /* SendPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */; };
+		5624558E1DB4C3560071A4B3 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558D1DB4C3560071A4B3 /* IntroViewController.m */; };
 		565F12871DACB76F00B96C52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12861DACB76F00B96C52 /* main.m */; };
 		565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12891DACB76F00B96C52 /* AppDelegate.m */; };
 		565F128D1DACB76F00B96C52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F128C1DACB76F00B96C52 /* ViewController.m */; };
@@ -23,6 +25,10 @@
 		17A5FF821C9E087BD5CC9E6F /* Pods-PhotoBooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBooth.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBooth/Pods-PhotoBooth.release.xcconfig"; sourceTree = "<group>"; };
 		562455831DB49EC40071A4B3 /* GlobalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalUtility.h; sourceTree = "<group>"; };
 		562455841DB49EC40071A4B3 /* GlobalUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalUtility.m; sourceTree = "<group>"; };
+		562455891DB4A6A00071A4B3 /* SendPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPhotoViewController.h; sourceTree = "<group>"; };
+		5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPhotoViewController.m; sourceTree = "<group>"; };
+		5624558C1DB4C3560071A4B3 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		5624558D1DB4C3560071A4B3 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		565F12821DACB76F00B96C52 /* PhotoBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565F12861DACB76F00B96C52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		565F12881DACB76F00B96C52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +93,10 @@
 				565F12891DACB76F00B96C52 /* AppDelegate.m */,
 				562455831DB49EC40071A4B3 /* GlobalUtility.h */,
 				562455841DB49EC40071A4B3 /* GlobalUtility.m */,
+				5624558C1DB4C3560071A4B3 /* IntroViewController.h */,
+				5624558D1DB4C3560071A4B3 /* IntroViewController.m */,
+				562455891DB4A6A00071A4B3 /* SendPhotoViewController.h */,
+				5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */,
 				565F128B1DACB76F00B96C52 /* ViewController.h */,
 				565F128C1DACB76F00B96C52 /* ViewController.m */,
 				565F128E1DACB76F00B96C52 /* Main.storyboard */,
@@ -239,6 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5624558B1DB4A6A00071A4B3 /* SendPhotoViewController.m in Sources */,
+				5624558E1DB4C3560071A4B3 /* IntroViewController.m in Sources */,
 				565F128D1DACB76F00B96C52 /* ViewController.m in Sources */,
 				565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */,
 				565F12871DACB76F00B96C52 /* main.m in Sources */,
