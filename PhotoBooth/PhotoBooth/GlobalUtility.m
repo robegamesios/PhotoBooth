@@ -94,4 +94,8 @@
     [viewController presentViewController:alert animated:YES completion:nil];
 }
 
++ (BOOL)isConnected {
+    return [AFNetworkReachabilityManager sharedManager].reachable;
+}
+
 @end
