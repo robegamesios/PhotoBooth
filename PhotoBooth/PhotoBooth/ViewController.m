@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
 @property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
 
 @property (strong, nonatomic) UIImage *finalImage;
 
@@ -110,6 +111,7 @@
 }
 
 - (void)updateTimer {
+    [self showLookHereArrow];
 
     static int time = 0;
 
@@ -130,6 +132,7 @@
             break;
 
         case 3:
+            self.imageViewLookHere.hidden = YES;
             self.imageViewCounter.image = nil;
 
             [self takePhoto];
@@ -170,6 +173,23 @@
 - (void)saveToCameraRoll:(UIImage *)screenShot {
     // save screengrab to Camera Roll
     UIImageWriteToSavedPhotosAlbum(screenShot, nil, nil, nil);
+}
+
+- (void)showLookHereArrow {
+    __weak typeof(self) weakSelf = self;
+
+    self.imageViewLookHere.hidden = NO;
+
+    [UIView animateWithDuration:1.0f
+                          delay:0
+         usingSpringWithDamping:0.25f
+          initialSpringVelocity:5.0
+                        options:UIViewAnimationOptionCurveEaseIn animations:^{
+                            //Animations
+                            weakSelf.imageViewLookHere.frame = CGRectMake(weakSelf.imageViewLookHere.frame.origin.x, weakSelf.imageViewLookHere.frame.origin.y - 50, weakSelf.imageViewLookHere.frame.size.width, weakSelf.imageViewLookHere.frame.size.height);
+                        }
+                     completion:^(BOOL finished) {
+                     }];
 }
 
 - (void)startPhotoShoot {

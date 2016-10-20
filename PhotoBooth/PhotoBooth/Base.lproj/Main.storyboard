@@ -119,6 +119,12 @@
                                     <action selector="retakePhotosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oKJ-zJ-GQH"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lookHere" translatesAutoresizingMaskIntoConstraints="NO" id="XqU-DY-Thr">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Af0-kY-zSo"/>
+                                    <constraint firstAttribute="height" constant="110" id="rYv-t8-A1a"/>
+                                </constraints>
+                            </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPo-s0-hCB">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -136,9 +142,11 @@
                             <constraint firstItem="e6t-WB-Uwf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="7:128" id="BsX-b7-vgp"/>
                             <constraint firstAttribute="trailing" secondItem="pXN-w9-eB4" secondAttribute="trailing" id="F38-q0-Ndt"/>
                             <constraint firstItem="vPo-s0-hCB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="3:4" id="FVo-jv-Zhz"/>
+                            <constraint firstItem="XqU-DY-Thr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IMq-eU-2Or"/>
                             <constraint firstItem="vPo-s0-hCB" firstAttribute="top" secondItem="pXN-w9-eB4" secondAttribute="top" id="KBE-Uc-mXB"/>
                             <constraint firstItem="Lhm-8y-RgG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="55:256" id="NvE-a9-Y7E"/>
                             <constraint firstItem="ChX-1i-Wfj" firstAttribute="top" secondItem="Nwj-Ok-dc7" secondAttribute="bottom" constant="-600" id="VP8-gH-0Nd"/>
+                            <constraint firstItem="XqU-DY-Thr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Vlp-1X-A4o"/>
                             <constraint firstItem="RN9-oF-dsP" firstAttribute="top" secondItem="Bq8-Bb-JQq" secondAttribute="bottom" constant="8" id="Y2B-Zg-MOL"/>
                             <constraint firstItem="e6t-WB-Uwf" firstAttribute="centerY" secondItem="ChX-1i-Wfj" secondAttribute="centerY" id="Yer-Ql-SRD"/>
                             <constraint firstItem="Bq8-Bb-JQq" firstAttribute="leading" secondItem="ChX-1i-Wfj" secondAttribute="trailing" constant="15" id="aa4-Cz-z88"/>
@@ -165,6 +173,7 @@
                         <outlet property="flashView" destination="vPo-s0-hCB" id="exe-EC-Xa9"/>
                         <outlet property="imageViewBg" destination="pXN-w9-eB4" id="5RT-MB-1fJ"/>
                         <outlet property="imageViewCounter" destination="Bq8-Bb-JQq" id="Q7o-wK-1Pp"/>
+                        <outlet property="imageViewLookHere" destination="XqU-DY-Thr" id="poY-Ux-jaf"/>
                         <outlet property="imageViewPreview" destination="RN9-oF-dsP" id="Vvh-jS-n9p"/>
                         <outlet property="imageViewPreview2" destination="Lhm-8y-RgG" id="YZ0-4P-wyo"/>
                         <outlet property="imageViewPreview3" destination="u83-Ez-oXE" id="mcY-nu-bB5"/>
@@ -212,6 +221,7 @@
     <resources>
         <image name="bg1" width="768" height="1024"/>
         <image name="emailPhotos" width="56" height="274"/>
+        <image name="lookHere" width="84" height="84"/>
         <image name="micko2" width="1024" height="768"/>
         <image name="placeholder1" width="178" height="237"/>
         <image name="placeholder2" width="178" height="237"/>
