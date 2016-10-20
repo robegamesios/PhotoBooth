@@ -11,6 +11,9 @@
 #import "SendPhotoViewController.h"
 #import "GlobalUtility.h"
 
+static int const StartTimerLimit = 5;
+static int const SucceedingTimerLimit = 3;
+
 @interface ViewController () <AWCameraViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBg;
@@ -19,11 +22,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview4;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewCounter;
 @property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
 @property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
+@property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel3;
 
 @property (strong, nonatomic) UIImage *finalImage;
 
@@ -43,6 +49,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    [self setupLabels];
     [self hideButtons:YES];
     [self hideElements:YES];
 }
@@ -70,6 +77,15 @@
 
 #pragma mark - Helpers
 
+- (void)setupLabels {
+    //Rotate countdownLabel 90 degress
+    self.countdownLabel.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel1.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel2.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
+
+}
+
 - (void)hideElements:(BOOL)status {
     self.flashView.alpha = 0.0f;
 
@@ -79,7 +95,10 @@
     self.imageViewPreview2.hidden = status;
     self.imageViewPreview3.hidden = status;
     self.imageViewPreview4.hidden = status;
-    self.imageViewCounter.hidden = status;
+    self.placeholderLabel1.hidden = status;
+    self.placeholderLabel2.hidden = status;
+    self.placeholderLabel3.hidden = status;
+
 }
 
 - (void)hideButtons:(BOOL)status {
@@ -113,36 +132,18 @@
 - (void)updateTimer {
     [self showLookHereArrow];
 
-    static int time = 0;
+    static int time = StartTimerLimit;
+    [self showCountdownTimer:time];
+    time--;
 
-    switch (time) {
-        case 0:
-            self.imageViewCounter.image = [UIImage imageNamed: @"counter3"];
-            time = 1;
-            break;
+    if (time < 0) {
+        self.imageViewLookHere.hidden = YES;
+        self.countdownLabel.hidden = YES;
 
-        case 1:
-            self.imageViewCounter.image = [UIImage imageNamed: @"counter2"];
-            time = 2;
-            break;
-
-        case 2:
-            self.imageViewCounter.image = [UIImage imageNamed: @"counter1"];
-            time = 3;
-            break;
-
-        case 3:
-            self.imageViewLookHere.hidden = YES;
-            self.imageViewCounter.image = nil;
-
-            [self takePhoto];
-            [self.timer invalidate];
-            self.timer = nil;
-            time = 0;
-            break;
-
-        default:
-            break;
+        [self takePhoto];
+        [self.timer invalidate];
+        self.timer = nil;
+        time = SucceedingTimerLimit;
     }
 }
 
@@ -190,6 +191,13 @@
                         }
                      completion:^(BOOL finished) {
                      }];
+}
+
+- (void)showCountdownTimer:(int)time {
+
+    self.countdownLabel.hidden = NO;
+    self.countdownLabel.text = [NSString stringWithFormat:@"%i", time];
+
 }
 
 - (void)startPhotoShoot {
@@ -246,18 +254,21 @@
 
     switch (counter) {
         case 0:
+            self.placeholderLabel1.hidden = YES;
             self.imageViewPreview.image = rotatedImage;
             [self takePhotoBlock];
             counter = 1;
             break;
 
         case 1:
+            self.placeholderLabel2.hidden = YES;
             self.imageViewPreview2.image = rotatedImage;
             [self takePhotoBlock];
             counter = 2;
             break;
 
         case 2:
+            self.placeholderLabel3.hidden = YES;
             self.imageViewPreview3.image = rotatedImage;
             [self takePhotoBlock];
             counter = 3;

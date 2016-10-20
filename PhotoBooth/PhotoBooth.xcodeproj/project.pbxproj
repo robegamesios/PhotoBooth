@@ -11,6 +11,8 @@
 		562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 562455841DB49EC40071A4B3 /* GlobalUtility.m */; };
 		5624558B1DB4A6A00071A4B3 /* SendPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */; };
 		5624558E1DB4C3560071A4B3 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558D1DB4C3560071A4B3 /* IntroViewController.m */; };
+		56476E011DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */; };
+		56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */; };
 		565F12871DACB76F00B96C52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12861DACB76F00B96C52 /* main.m */; };
 		565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12891DACB76F00B96C52 /* AppDelegate.m */; };
 		565F128D1DACB76F00B96C52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F128C1DACB76F00B96C52 /* ViewController.m */; };
@@ -29,6 +31,8 @@
 		5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPhotoViewController.m; sourceTree = "<group>"; };
 		5624558C1DB4C3560071A4B3 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
 		5624558D1DB4C3560071A4B3 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Bold 2.1.ttf"; sourceTree = "<group>"; };
+		56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Light 1.1.ttf"; sourceTree = "<group>"; };
 		565F12821DACB76F00B96C52 /* PhotoBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565F12861DACB76F00B96C52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		565F12881DACB76F00B96C52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,6 +70,15 @@
 				17A5FF821C9E087BD5CC9E6F /* Pods-PhotoBooth.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		56476DFE1DB8A01F003F209F /* doctor_soos */ = {
+			isa = PBXGroup;
+			children = (
+				56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */,
+				56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */,
+			);
+			path = doctor_soos;
 			sourceTree = "<group>";
 		};
 		565F12791DACB76F00B96C52 = {
@@ -111,6 +124,7 @@
 		565F12851DACB76F00B96C52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				56476DFE1DB8A01F003F209F /* doctor_soos */,
 				565F12861DACB76F00B96C52 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -189,8 +203,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				565F12951DACB76F00B96C52 /* LaunchScreen.storyboard in Resources */,
+				56476E011DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf in Resources */,
 				565F12921DACB76F00B96C52 /* Assets.xcassets in Resources */,
 				565F12901DACB76F00B96C52 /* Main.storyboard in Resources */,
+				56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
