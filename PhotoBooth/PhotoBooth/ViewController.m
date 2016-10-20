@@ -289,7 +289,7 @@ static int const SucceedingTimerLimit = 3;
 
     if (error) {
         NSString *message = @"Oops! Unable to take your pic. Please try again";
-        [GlobalUtility showAlert:self title:nil message:message completionHandler:nil];
+        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
     }
 }
 
@@ -325,7 +325,11 @@ static int const SucceedingTimerLimit = 3;
 }
 
 - (IBAction)discardButtonTapped:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
+    __weak typeof(self) weakSelf = self;
+
+    [GlobalUtility showConfirmAlertFromViewController:self title:nil message:@"Discard photos?" confirmButtonTitle:@"Discard" cancelButtonTitle:@"Cancel" completionHandler:^{
+        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
+    }];
 }
 
 #pragma mark - Navigation

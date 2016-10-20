@@ -12,7 +12,7 @@
 
 #pragma mark - Alert Controller Messages
 
-+ (void)showAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
++ (void)showAlertFromNavigationController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
 
     UIAlertController *alert=   [UIAlertController
                                  alertControllerWithTitle:title
@@ -36,7 +36,7 @@
     [navigationController presentViewController:alert animated:YES completion:nil];
 }
 
-+ (void)showConfirmAlertFromViewController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle cancelButtonTitle:(NSString *)cancelButtonTitle completionHandler:(VoidBlock)completionHandler {
++ (void)showConfirmAlertFromNavigationController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle cancelButtonTitle:(NSString *)cancelButtonTitle completionHandler:(VoidBlock)completionHandler {
 
     UIAlertController *alert=   [UIAlertController
                                  alertControllerWithTitle:title
@@ -70,7 +70,7 @@
     [navigationController presentViewController:alert animated:YES completion:nil];
 }
 
-+ (void)showAlert:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
++ (void)showAlertFromViewController:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler {
 
     UIAlertController *alert=   [UIAlertController
                                  alertControllerWithTitle:title
@@ -90,6 +90,40 @@
                          }];
 
     [alert addAction:ok];
+
+    [viewController presentViewController:alert animated:YES completion:nil];
+}
+
++ (void)showConfirmAlertFromViewController:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle cancelButtonTitle:(NSString *)cancelButtonTitle completionHandler:(VoidBlock)completionHandler {
+
+    UIAlertController *alert=   [UIAlertController
+                                 alertControllerWithTitle:title
+                                 message:message
+                                 preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *ok = [UIAlertAction
+                         actionWithTitle:confirmButtonTitle
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             if (completionHandler) {
+                                 completionHandler();
+                             }
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+
+                         }];
+
+    UIAlertAction *cancel = [UIAlertAction
+                             actionWithTitle:cancelButtonTitle
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+
+                             }];
+
+    [alert addAction:ok];
+    [alert addAction:cancel];
 
     [viewController presentViewController:alert animated:YES completion:nil];
 }

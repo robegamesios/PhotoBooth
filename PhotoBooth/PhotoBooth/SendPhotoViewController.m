@@ -112,7 +112,7 @@
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:nil];
 
-    [GlobalUtility showAlert:self title:nil message:message completionHandler:^{
+    [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:^{
         [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
     }];
 }
