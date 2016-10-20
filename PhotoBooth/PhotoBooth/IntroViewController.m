@@ -27,7 +27,7 @@
     return UIInterfaceOrientationMaskLandscapeRight;
 }
 
-- (IBAction)unWindToIntroScreen:(UIStoryboardSegue *)segue {
+- (IBAction)unwindToIntroScreen:(UIStoryboardSegue *)segue {
 
 }
 

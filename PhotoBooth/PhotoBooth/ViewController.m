@@ -22,14 +22,18 @@ static int const SucceedingTimerLimit = 3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview4;
-@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel3;
+
+@property (weak, nonatomic) IBOutlet UIView *menuView;
+@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *printPhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *discardPhotosButton;
 
 @property (strong, nonatomic) UIImage *finalImage;
 
@@ -50,7 +54,7 @@ static int const SucceedingTimerLimit = 3;
     [super viewWillAppear:animated];
 
     [self setupLabels];
-    [self hideButtons:YES];
+    self.menuView.hidden = YES;
     [self hideElements:YES];
 }
 
@@ -99,11 +103,6 @@ static int const SucceedingTimerLimit = 3;
     self.placeholderLabel2.hidden = status;
     self.placeholderLabel3.hidden = status;
 
-}
-
-- (void)hideButtons:(BOOL)status {
-    self.retakePhotosButton.hidden = status;
-    self.emailPhotosButton.hidden = status;
 }
 
 - (void)takePhotoBlock {
@@ -277,10 +276,8 @@ static int const SucceedingTimerLimit = 3;
         case 3:
             self.cameraView.hidden = YES;
             self.imageViewPreview4.image = rotatedImage;
-
-            [self hideButtons:NO];
+            self.menuView.hidden = NO;
             counter = 0;
-
             break;
 
         default:
@@ -299,35 +296,46 @@ static int const SucceedingTimerLimit = 3;
 
 #pragma mark - IBActions
 
-- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
-
-    [self hideButtons:YES];
-    self.cameraView.hidden = NO;
-
-    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder1"];
-    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder2"];
-    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder3"];
-    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
-
-    [self takePhotoBlock];
-}
-
 - (IBAction)emailPhotosButtonTapped:(UIButton *)sender {
     self.cameraView.hidden = YES;
 
-    [self hideButtons:YES];
+    self.menuView.hidden = YES;
 
     self.finalImage = [self takeScreenshot:self.view];
     [self saveToCameraRoll:[self takeScreenshot:self.view]];
 }
 
+- (IBAction)printPhotosButtonTapped:(UIButton *)sender {
+    //RE: TODO
+}
+
+- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
+
+    self.menuView.hidden = YES;
+    self.cameraView.hidden = NO;
+    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder"];
+    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder"];
+    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder"];
+    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
+    self.placeholderLabel1.hidden = NO;
+    self.placeholderLabel2.hidden = NO;
+    self.placeholderLabel3.hidden = NO;
+
+    [self takePhotoBlock];
+}
+
+- (IBAction)discardButtonTapped:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
+}
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    SendPhotoViewController *vc = [segue destinationViewController];
-    vc.imageToSend = self.finalImage;
+    if ([segue.destinationViewController isKindOfClass:[SendPhotoViewController class]]) {
+        SendPhotoViewController *vc = [segue destinationViewController];
+        vc.imageToSend = self.finalImage;
+    }
 }
 
 @end
