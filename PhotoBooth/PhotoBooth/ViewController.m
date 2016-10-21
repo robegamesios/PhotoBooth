@@ -325,11 +325,13 @@ static int const SucceedingTimerLimit = 3;
 }
 
 - (IBAction)discardButtonTapped:(UIButton *)sender {
-    __weak typeof(self) weakSelf = self;
+    [self performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
 
-    [GlobalUtility showConfirmAlertFromViewController:self title:nil message:@"Discard photos?" confirmButtonTitle:@"Discard" cancelButtonTitle:@"Cancel" completionHandler:^{
-        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
-    }];
+//    __weak typeof(self) weakSelf = self;
+//
+//    [GlobalUtility showConfirmAlertFromViewController:self title:nil message:@"Discard photos?" confirmButtonTitle:@"Discard" cancelButtonTitle:@"Cancel" completionHandler:^{
+//        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
+//    }];
 }
 
 #pragma mark - Navigation
