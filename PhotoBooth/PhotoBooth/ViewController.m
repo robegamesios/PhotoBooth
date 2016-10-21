@@ -11,6 +11,9 @@
 #import "SendPhotoViewController.h"
 #import "GlobalUtility.h"
 
+static int const StartTimerLimit = 5;
+static int const SucceedingTimerLimit = 3;
+
 @interface ViewController () <AWCameraViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBg;
@@ -19,10 +22,18 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview4;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewCounter;
-@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
+@property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel3;
+
+@property (weak, nonatomic) IBOutlet UIView *menuView;
+@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *printPhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
+@property (weak, nonatomic) IBOutlet UIButton *discardPhotosButton;
 
 @property (strong, nonatomic) UIImage *finalImage;
 
@@ -42,7 +53,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self hideButtons:YES];
+    [self setupLabels];
+    self.menuView.hidden = YES;
     [self hideElements:YES];
 }
 
@@ -69,6 +81,15 @@
 
 #pragma mark - Helpers
 
+- (void)setupLabels {
+    //Rotate countdownLabel 90 degress
+    self.countdownLabel.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel1.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel2.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
+
+}
+
 - (void)hideElements:(BOOL)status {
     self.flashView.alpha = 0.0f;
 
@@ -78,12 +99,10 @@
     self.imageViewPreview2.hidden = status;
     self.imageViewPreview3.hidden = status;
     self.imageViewPreview4.hidden = status;
-    self.imageViewCounter.hidden = status;
-}
+    self.placeholderLabel1.hidden = status;
+    self.placeholderLabel2.hidden = status;
+    self.placeholderLabel3.hidden = status;
 
-- (void)hideButtons:(BOOL)status {
-    self.retakePhotosButton.hidden = status;
-    self.emailPhotosButton.hidden = status;
 }
 
 - (void)takePhotoBlock {
@@ -110,36 +129,20 @@
 }
 
 - (void)updateTimer {
+    [self showLookHereArrow];
 
-    static int time = 0;
+    static int time = StartTimerLimit;
+    [self showCountdownTimer:time];
+    time--;
 
-    switch (time) {
-        case 0:
-            self.imageViewCounter.image = [UIImage imageNamed: @"counter3"];
-            time = 1;
-            break;
+    if (time < 0) {
+        self.imageViewLookHere.hidden = YES;
+        self.countdownLabel.hidden = YES;
 
-        case 1:
-            self.imageViewCounter.image = [UIImage imageNamed: @"counter2"];
-            time = 2;
-            break;
-
-        case 2:
-            self.imageViewCounter.image = [UIImage imageNamed: @"counter1"];
-            time = 3;
-            break;
-
-        case 3:
-            self.imageViewCounter.image = nil;
-
-            [self takePhoto];
-            [self.timer invalidate];
-            self.timer = nil;
-            time = 0;
-            break;
-
-        default:
-            break;
+        [self takePhoto];
+        [self.timer invalidate];
+        self.timer = nil;
+        time = SucceedingTimerLimit;
     }
 }
 
@@ -170,6 +173,30 @@
 - (void)saveToCameraRoll:(UIImage *)screenShot {
     // save screengrab to Camera Roll
     UIImageWriteToSavedPhotosAlbum(screenShot, nil, nil, nil);
+}
+
+- (void)showLookHereArrow {
+    __weak typeof(self) weakSelf = self;
+
+    self.imageViewLookHere.hidden = NO;
+
+    [UIView animateWithDuration:1.0f
+                          delay:0
+         usingSpringWithDamping:0.25f
+          initialSpringVelocity:5.0
+                        options:UIViewAnimationOptionCurveEaseIn animations:^{
+                            //Animations
+                            weakSelf.imageViewLookHere.frame = CGRectMake(weakSelf.imageViewLookHere.frame.origin.x, weakSelf.imageViewLookHere.frame.origin.y - 50, weakSelf.imageViewLookHere.frame.size.width, weakSelf.imageViewLookHere.frame.size.height);
+                        }
+                     completion:^(BOOL finished) {
+                     }];
+}
+
+- (void)showCountdownTimer:(int)time {
+
+    self.countdownLabel.hidden = NO;
+    self.countdownLabel.text = [NSString stringWithFormat:@"%i", time];
+
 }
 
 - (void)startPhotoShoot {
@@ -226,18 +253,21 @@
 
     switch (counter) {
         case 0:
+            self.placeholderLabel1.hidden = YES;
             self.imageViewPreview.image = rotatedImage;
             [self takePhotoBlock];
             counter = 1;
             break;
 
         case 1:
+            self.placeholderLabel2.hidden = YES;
             self.imageViewPreview2.image = rotatedImage;
             [self takePhotoBlock];
             counter = 2;
             break;
 
         case 2:
+            self.placeholderLabel3.hidden = YES;
             self.imageViewPreview3.image = rotatedImage;
             [self takePhotoBlock];
             counter = 3;
@@ -246,10 +276,8 @@
         case 3:
             self.cameraView.hidden = YES;
             self.imageViewPreview4.image = rotatedImage;
-
-            [self hideButtons:NO];
+            self.menuView.hidden = NO;
             counter = 0;
-
             break;
 
         default:
@@ -261,42 +289,59 @@
 
     if (error) {
         NSString *message = @"Oops! Unable to take your pic. Please try again";
-        [GlobalUtility showAlert:self title:nil message:message completionHandler:nil];
+        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
     }
 }
 
 
 #pragma mark - IBActions
 
-- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
-
-    [self hideButtons:YES];
-    self.cameraView.hidden = NO;
-
-    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder1"];
-    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder2"];
-    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder3"];
-    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
-
-    [self takePhotoBlock];
-}
-
 - (IBAction)emailPhotosButtonTapped:(UIButton *)sender {
     self.cameraView.hidden = YES;
 
-    [self hideButtons:YES];
+    self.menuView.hidden = YES;
 
     self.finalImage = [self takeScreenshot:self.view];
     [self saveToCameraRoll:[self takeScreenshot:self.view]];
 }
 
+- (IBAction)printPhotosButtonTapped:(UIButton *)sender {
+    //RE: TODO
+}
+
+- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
+
+    self.menuView.hidden = YES;
+    self.cameraView.hidden = NO;
+    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder"];
+    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder"];
+    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder"];
+    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
+    self.placeholderLabel1.hidden = NO;
+    self.placeholderLabel2.hidden = NO;
+    self.placeholderLabel3.hidden = NO;
+
+    [self takePhotoBlock];
+}
+
+- (IBAction)discardButtonTapped:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
+
+//    __weak typeof(self) weakSelf = self;
+//
+//    [GlobalUtility showConfirmAlertFromViewController:self title:nil message:@"Discard photos?" confirmButtonTitle:@"Discard" cancelButtonTitle:@"Cancel" completionHandler:^{
+//        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
+//    }];
+}
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    SendPhotoViewController *vc = [segue destinationViewController];
-    vc.imageToSend = self.finalImage;
+    if ([segue.destinationViewController isKindOfClass:[SendPhotoViewController class]]) {
+        SendPhotoViewController *vc = [segue destinationViewController];
+        vc.imageToSend = self.finalImage;
+    }
 }
 
 @end
