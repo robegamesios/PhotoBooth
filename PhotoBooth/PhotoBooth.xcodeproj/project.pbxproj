@@ -8,41 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		2FE390511D5E24E39B43FFC4 /* libPods-PhotoBooth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */; };
-		562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 562455841DB49EC40071A4B3 /* GlobalUtility.m */; };
-		5624558B1DB4A6A00071A4B3 /* SendPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */; };
-		5624558E1DB4C3560071A4B3 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558D1DB4C3560071A4B3 /* IntroViewController.m */; };
 		56476E011DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */; };
 		56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */; };
 		565F12871DACB76F00B96C52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12861DACB76F00B96C52 /* main.m */; };
 		565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12891DACB76F00B96C52 /* AppDelegate.m */; };
-		565F128D1DACB76F00B96C52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F128C1DACB76F00B96C52 /* ViewController.m */; };
 		565F12901DACB76F00B96C52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F128E1DACB76F00B96C52 /* Main.storyboard */; };
 		565F12921DACB76F00B96C52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565F12911DACB76F00B96C52 /* Assets.xcassets */; };
 		565F12951DACB76F00B96C52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F12931DACB76F00B96C52 /* LaunchScreen.storyboard */; };
+		56E1A0CB1DBA053400E5180C /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E1A0C41DBA053400E5180C /* CameraViewController.m */; };
+		56E1A0CC1DBA053400E5180C /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E1A0C61DBA053400E5180C /* IntroViewController.m */; };
+		56E1A0CD1DBA053400E5180C /* SendPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E1A0C81DBA053400E5180C /* SendPhotoViewController.m */; };
+		56E1A0CE1DBA053400E5180C /* LayoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E1A0CA1DBA053400E5180C /* LayoutsViewController.m */; };
+		56E1A0D21DBA056C00E5180C /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E1A0D11DBA056C00E5180C /* GlobalUtility.m */; };
 		56F6DCC91DADE9CE002F7D23 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC71DADE9CD002F7D23 /* Photos.framework */; };
 		56F6DCCA1DADE9CE002F7D23 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17A5FF821C9E087BD5CC9E6F /* Pods-PhotoBooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBooth.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBooth/Pods-PhotoBooth.release.xcconfig"; sourceTree = "<group>"; };
-		562455831DB49EC40071A4B3 /* GlobalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalUtility.h; sourceTree = "<group>"; };
-		562455841DB49EC40071A4B3 /* GlobalUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalUtility.m; sourceTree = "<group>"; };
-		562455891DB4A6A00071A4B3 /* SendPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPhotoViewController.h; sourceTree = "<group>"; };
-		5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPhotoViewController.m; sourceTree = "<group>"; };
-		5624558C1DB4C3560071A4B3 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
-		5624558D1DB4C3560071A4B3 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Bold 2.1.ttf"; sourceTree = "<group>"; };
 		56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Light 1.1.ttf"; sourceTree = "<group>"; };
 		565F12821DACB76F00B96C52 /* PhotoBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565F12861DACB76F00B96C52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		565F12881DACB76F00B96C52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		565F12891DACB76F00B96C52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		565F128B1DACB76F00B96C52 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		565F128C1DACB76F00B96C52 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		565F128F1DACB76F00B96C52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		565F12911DACB76F00B96C52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565F12941DACB76F00B96C52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		565F12961DACB76F00B96C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56E1A0C31DBA053400E5180C /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		56E1A0C41DBA053400E5180C /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		56E1A0C51DBA053400E5180C /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		56E1A0C61DBA053400E5180C /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		56E1A0C71DBA053400E5180C /* SendPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPhotoViewController.h; sourceTree = "<group>"; };
+		56E1A0C81DBA053400E5180C /* SendPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPhotoViewController.m; sourceTree = "<group>"; };
+		56E1A0C91DBA053400E5180C /* LayoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutsViewController.h; sourceTree = "<group>"; };
+		56E1A0CA1DBA053400E5180C /* LayoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutsViewController.m; sourceTree = "<group>"; };
+		56E1A0D01DBA056C00E5180C /* GlobalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalUtility.h; sourceTree = "<group>"; };
+		56E1A0D11DBA056C00E5180C /* GlobalUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalUtility.m; sourceTree = "<group>"; };
 		56F6DCC71DADE9CD002F7D23 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoBooth.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,18 +107,10 @@
 			children = (
 				565F12881DACB76F00B96C52 /* AppDelegate.h */,
 				565F12891DACB76F00B96C52 /* AppDelegate.m */,
-				562455831DB49EC40071A4B3 /* GlobalUtility.h */,
-				562455841DB49EC40071A4B3 /* GlobalUtility.m */,
-				5624558C1DB4C3560071A4B3 /* IntroViewController.h */,
-				5624558D1DB4C3560071A4B3 /* IntroViewController.m */,
-				562455891DB4A6A00071A4B3 /* SendPhotoViewController.h */,
-				5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */,
-				565F128B1DACB76F00B96C52 /* ViewController.h */,
-				565F128C1DACB76F00B96C52 /* ViewController.m */,
+				56E1A0C21DBA053400E5180C /* ViewControllers */,
+				56E1A0CF1DBA056C00E5180C /* Utility */,
 				565F128E1DACB76F00B96C52 /* Main.storyboard */,
-				565F12911DACB76F00B96C52 /* Assets.xcassets */,
 				565F12931DACB76F00B96C52 /* LaunchScreen.storyboard */,
-				565F12961DACB76F00B96C52 /* Info.plist */,
 				565F12851DACB76F00B96C52 /* Supporting Files */,
 			);
 			path = PhotoBooth;
@@ -124,10 +119,36 @@
 		565F12851DACB76F00B96C52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				565F12911DACB76F00B96C52 /* Assets.xcassets */,
+				565F12961DACB76F00B96C52 /* Info.plist */,
 				56476DFE1DB8A01F003F209F /* doctor_soos */,
 				565F12861DACB76F00B96C52 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56E1A0C21DBA053400E5180C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				56E1A0C31DBA053400E5180C /* CameraViewController.h */,
+				56E1A0C41DBA053400E5180C /* CameraViewController.m */,
+				56E1A0C51DBA053400E5180C /* IntroViewController.h */,
+				56E1A0C61DBA053400E5180C /* IntroViewController.m */,
+				56E1A0C71DBA053400E5180C /* SendPhotoViewController.h */,
+				56E1A0C81DBA053400E5180C /* SendPhotoViewController.m */,
+				56E1A0C91DBA053400E5180C /* LayoutsViewController.h */,
+				56E1A0CA1DBA053400E5180C /* LayoutsViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		56E1A0CF1DBA056C00E5180C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				56E1A0D01DBA056C00E5180C /* GlobalUtility.h */,
+				56E1A0D11DBA056C00E5180C /* GlobalUtility.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		E34231AA062647350EC4C689 /* Frameworks */ = {
@@ -265,12 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5624558B1DB4A6A00071A4B3 /* SendPhotoViewController.m in Sources */,
-				5624558E1DB4C3560071A4B3 /* IntroViewController.m in Sources */,
-				565F128D1DACB76F00B96C52 /* ViewController.m in Sources */,
+				56E1A0CE1DBA053400E5180C /* LayoutsViewController.m in Sources */,
+				56E1A0CD1DBA053400E5180C /* SendPhotoViewController.m in Sources */,
+				56E1A0D21DBA056C00E5180C /* GlobalUtility.m in Sources */,
+				56E1A0CB1DBA053400E5180C /* CameraViewController.m in Sources */,
 				565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */,
 				565F12871DACB76F00B96C52 /* main.m in Sources */,
-				562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */,
+				56E1A0CC1DBA053400E5180C /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

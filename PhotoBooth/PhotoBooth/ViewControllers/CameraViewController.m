@@ -1,50 +1,33 @@
 //
-//  ViewController.m
+//  CameraViewController.m
 //  PhotoBooth
 //
-//  Created by Rob Enriquez on 10/10/16.
+//  Created by Rob Enriquez on 10/21/16.
 //  Copyright © 2016 robert enriquez. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CameraViewController.h"
 #import "AWCameraView.h"
-#import "SendPhotoViewController.h"
+#import "LayoutsViewController.h"
 #import "GlobalUtility.h"
 
 static int const StartTimerLimit = 5;
 static int const SucceedingTimerLimit = 3;
 
-@interface ViewController () <AWCameraViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewBg;
+@interface CameraViewController ()  <AWCameraViewDelegate>
 @property (weak, nonatomic) IBOutlet AWCameraView *cameraView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview2;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview3;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview4;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
-@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel1;
-@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel2;
-@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel3;
-
-@property (weak, nonatomic) IBOutlet UIView *menuView;
-@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *printPhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *discardPhotosButton;
-
-@property (strong, nonatomic) UIImage *finalImage;
-
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) UIImageView *imageViewPreview;
+@property (strong, nonatomic) UIImageView *imageViewPreview2;
+@property (strong, nonatomic) UIImageView *imageViewPreview3;
+@property (strong, nonatomic) UIImageView *imageViewPreview4;
 
 @end
 
-@implementation ViewController
-
-
-#pragma mark - lifeCyles
+@implementation CameraViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,7 +37,6 @@ static int const SucceedingTimerLimit = 3;
     [super viewWillAppear:animated];
 
     [self setupLabels];
-    self.menuView.hidden = YES;
     [self hideElements:YES];
 }
 
@@ -84,31 +66,17 @@ static int const SucceedingTimerLimit = 3;
 - (void)setupLabels {
     //Rotate countdownLabel 90 degress
     self.countdownLabel.transform = CGAffineTransformMakeRotation(3.14f/2);
-    self.placeholderLabel1.transform = CGAffineTransformMakeRotation(3.14f/2);
-    self.placeholderLabel2.transform = CGAffineTransformMakeRotation(3.14f/2);
-    self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
-
 }
 
 - (void)hideElements:(BOOL)status {
     self.flashView.alpha = 0.0f;
-
-    self.imageViewBg.hidden = status;
     self.cameraView.hidden = status;
-    self.imageViewPreview.hidden = status;
-    self.imageViewPreview2.hidden = status;
-    self.imageViewPreview3.hidden = status;
-    self.imageViewPreview4.hidden = status;
-    self.placeholderLabel1.hidden = status;
-    self.placeholderLabel2.hidden = status;
-    self.placeholderLabel3.hidden = status;
-
 }
 
 - (void)takePhotoBlock {
     __weak typeof(self) weakSelf = self;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [weakSelf.cameraView retakePicture];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -122,10 +90,10 @@ static int const SucceedingTimerLimit = 3;
 
 - (void)startCameraTimer {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                     target:self
-                                   selector:@selector(updateTimer)
-                                   userInfo:nil
-                                    repeats:YES];
+                                                  target:self
+                                                selector:@selector(updateTimer)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (void)updateTimer {
@@ -161,20 +129,6 @@ static int const SucceedingTimerLimit = 3;
     return flippedImage;
 }
 
-- (UIImage *)takeScreenshot:(UIView *)wholeScreen {
-    UIGraphicsBeginImageContextWithOptions(wholeScreen.bounds.size, wholeScreen.opaque, 0.0);
-    [wholeScreen drawViewHierarchyInRect:wholeScreen.bounds afterScreenUpdates:YES];
-    UIImage * snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return snapshotImage;
-}
-
-- (void)saveToCameraRoll:(UIImage *)screenShot {
-    // save screengrab to Camera Roll
-    UIImageWriteToSavedPhotosAlbum(screenShot, nil, nil, nil);
-}
-
 - (void)showLookHereArrow {
     __weak typeof(self) weakSelf = self;
 
@@ -195,24 +149,35 @@ static int const SucceedingTimerLimit = 3;
 - (void)showCountdownTimer:(int)time {
 
     self.countdownLabel.hidden = NO;
+    self.countdownLabel.alpha = 1.0f;
+
     self.countdownLabel.text = [NSString stringWithFormat:@"%i", time];
+
+
+    [UIView animateWithDuration: 1.0f
+                     animations: ^{
+                         self.countdownLabel.alpha = 0.0f;
+                         [UIScreen mainScreen].brightness = 0.6f;
+                     }
+                     completion: ^(BOOL finished) {
+                     }
+     ];
 
 }
 
 - (void)startPhotoShoot {
-    self.finalImage = nil;
 
     self.cameraView.delegate = self;
     self.cameraView.position = AWCameraViewPositionFront;
-    
-//    /// Enable tap-on-focus for camera-view; no need to call 'focusOnPoint'
-//    self.cameraView.enableFocusOnTap = YES;
-//
-//    /// (Manually) focus on top-left point of camera-view
-//    [cameraView focusOnPoint:CGPointMake(0, 0)];
-//
-//    /// (Manually) focus on bottom-right point of camera-view
-//    [cameraView focusOnPoint:CGPointMake(1, 1)];
+
+    //    /// Enable tap-on-focus for camera-view; no need to call 'focusOnPoint'
+    //    self.cameraView.enableFocusOnTap = YES;
+    //
+    //    /// (Manually) focus on top-left point of camera-view
+    //    [cameraView focusOnPoint:CGPointMake(0, 0)];
+    //
+    //    /// (Manually) focus on bottom-right point of camera-view
+    //    [cameraView focusOnPoint:CGPointMake(1, 1)];
 }
 
 - (void)takePhoto {
@@ -253,31 +218,28 @@ static int const SucceedingTimerLimit = 3;
 
     switch (counter) {
         case 0:
-            self.placeholderLabel1.hidden = YES;
             self.imageViewPreview.image = rotatedImage;
             [self takePhotoBlock];
             counter = 1;
             break;
 
         case 1:
-            self.placeholderLabel2.hidden = YES;
             self.imageViewPreview2.image = rotatedImage;
             [self takePhotoBlock];
             counter = 2;
             break;
 
         case 2:
-            self.placeholderLabel3.hidden = YES;
             self.imageViewPreview3.image = rotatedImage;
             [self takePhotoBlock];
             counter = 3;
             break;
 
         case 3:
-            self.cameraView.hidden = YES;
             self.imageViewPreview4.image = rotatedImage;
-            self.menuView.hidden = NO;
             counter = 0;
+            [self performSegueWithIdentifier:@"SegueToLayoutsViewController" sender:self];
+
             break;
 
         default:
@@ -294,54 +256,50 @@ static int const SucceedingTimerLimit = 3;
 }
 
 
-#pragma mark - IBActions
+#pragma mark - Setters
 
-- (IBAction)emailPhotosButtonTapped:(UIButton *)sender {
-    self.cameraView.hidden = YES;
+- (UIImageView *)imageViewPreview {
+    if (!_imageViewPreview) {
+        _imageViewPreview = [UIImageView new];
+    }
 
-    self.menuView.hidden = YES;
-
-    self.finalImage = [self takeScreenshot:self.view];
-    [self saveToCameraRoll:[self takeScreenshot:self.view]];
+    return _imageViewPreview;
 }
 
-- (IBAction)printPhotosButtonTapped:(UIButton *)sender {
-    //RE: TODO
+- (UIImageView *)imageViewPreview2 {
+    if (!_imageViewPreview2) {
+        _imageViewPreview2 = [UIImageView new];
+    }
+
+    return _imageViewPreview2;
 }
 
-- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
+- (UIImageView *)imageViewPreview3 {
+    if (!_imageViewPreview3) {
+        _imageViewPreview3 = [UIImageView new];
+    }
 
-    self.menuView.hidden = YES;
-    self.cameraView.hidden = NO;
-    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder"];
-    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder"];
-    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder"];
-    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
-    self.placeholderLabel1.hidden = NO;
-    self.placeholderLabel2.hidden = NO;
-    self.placeholderLabel3.hidden = NO;
-
-    [self takePhotoBlock];
+    return _imageViewPreview3;
 }
 
-- (IBAction)discardButtonTapped:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
+- (UIImageView *)imageViewPreview4 {
+    if (!_imageViewPreview4) {
+        _imageViewPreview4 = [UIImageView new];
+    }
 
-//    __weak typeof(self) weakSelf = self;
-//
-//    [GlobalUtility showConfirmAlertFromViewController:self title:nil message:@"Discard photos?" confirmButtonTitle:@"Discard" cancelButtonTitle:@"Cancel" completionHandler:^{
-//        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
-//    }];
+    return _imageViewPreview4;
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    if ([segue.destinationViewController isKindOfClass:[SendPhotoViewController class]]) {
-        SendPhotoViewController *vc = [segue destinationViewController];
-        vc.imageToSend = self.finalImage;
+    
+    if ([segue.destinationViewController isKindOfClass:[LayoutsViewController class]]) {
+        LayoutsViewController *vc = [segue destinationViewController];
+        vc.image1 = self.imageViewPreview.image;
+        vc.image2 = self.imageViewPreview2.image;
+        vc.image3 = self.imageViewPreview3.image;
+        vc.image4 = self.imageViewPreview4.image;
     }
 }
-
 @end
