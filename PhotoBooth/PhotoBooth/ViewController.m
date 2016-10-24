@@ -38,6 +38,7 @@ static int const SucceedingTimerLimit = 3;
 @property (strong, nonatomic) UIImage *finalImage;
 
 @property (strong, nonatomic) NSTimer *timer;
+@property (assign, nonatomic) int timerLimit;
 
 @end
 
@@ -88,6 +89,7 @@ static int const SucceedingTimerLimit = 3;
     self.placeholderLabel2.transform = CGAffineTransformMakeRotation(3.14f/2);
     self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
 
+    self.timerLimit = StartTimerLimit;
 }
 
 - (void)hideElements:(BOOL)status {
@@ -131,18 +133,17 @@ static int const SucceedingTimerLimit = 3;
 - (void)updateTimer {
     [self showLookHereArrow];
 
-    static int time = StartTimerLimit;
-    [self showCountdownTimer:time];
-    time--;
+    [self showCountdownTimer:self.timerLimit];
+    self.timerLimit--;
 
-    if (time < 0) {
+    if (self.timerLimit < 0) {
         self.imageViewLookHere.hidden = YES;
         self.countdownLabel.hidden = YES;
 
         [self takePhoto];
         [self.timer invalidate];
         self.timer = nil;
-        time = SucceedingTimerLimit;
+        self.timerLimit = SucceedingTimerLimit;
     }
 }
 
@@ -319,9 +320,12 @@ static int const SucceedingTimerLimit = 3;
 
 - (IBAction)printPhotosButtonTapped:(UIButton *)sender {
     //RE: TODO
+    
 }
 
 - (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
+
+    self.timerLimit = StartTimerLimit;
 
     self.menuView.hidden = YES;
     self.cameraView.hidden = NO;
