@@ -195,8 +195,18 @@ static int const SucceedingTimerLimit = 3;
 - (void)showCountdownTimer:(int)time {
 
     self.countdownLabel.hidden = NO;
+    self.countdownLabel.alpha = 1.0f;
+
     self.countdownLabel.text = [NSString stringWithFormat:@"%i", time];
 
+    [UIView animateWithDuration: 1.0f
+                     animations: ^{
+                         self.countdownLabel.alpha = 0.0f;
+                         [UIScreen mainScreen].brightness = 0.6f;
+                     }
+                     completion: ^(BOOL finished) {
+                     }
+     ];
 }
 
 - (void)startPhotoShoot {
