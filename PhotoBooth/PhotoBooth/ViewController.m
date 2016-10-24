@@ -194,6 +194,8 @@ static int const SucceedingTimerLimit = 3;
 
 - (void)showCountdownTimer:(int)time {
 
+    __weak typeof(self) weakSelf = self;
+
     self.countdownLabel.hidden = NO;
     self.countdownLabel.alpha = 1.0f;
 
@@ -201,7 +203,7 @@ static int const SucceedingTimerLimit = 3;
 
     [UIView animateWithDuration: 1.0f
                      animations: ^{
-                         self.countdownLabel.alpha = 0.0f;
+                         weakSelf.countdownLabel.alpha = 0.0f;
                          [UIScreen mainScreen].brightness = 0.6f;
                      }
                      completion: ^(BOOL finished) {
