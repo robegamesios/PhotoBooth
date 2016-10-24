@@ -29,12 +29,6 @@ static int const SucceedingTimerLimit = 3;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel3;
 
-@property (weak, nonatomic) IBOutlet UIView *menuView;
-@property (weak, nonatomic) IBOutlet UIButton *emailPhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *printPhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *retakePhotosButton;
-@property (weak, nonatomic) IBOutlet UIButton *discardPhotosButton;
-
 @property (strong, nonatomic) UIImage *finalImage;
 
 @property (strong, nonatomic) NSTimer *timer;
@@ -55,7 +49,6 @@ static int const SucceedingTimerLimit = 3;
     [super viewWillAppear:animated];
 
     [self setupLabels];
-    self.menuView.hidden = YES;
     [self hideElements:YES];
 }
 
@@ -147,35 +140,6 @@ static int const SucceedingTimerLimit = 3;
     }
 }
 
-
-#pragma mark - Photo methods
-
-- (UIImage *)rotateImage:(UIImage *)image {
-    UIImage * landscapeImage = [[UIImage alloc] initWithCGImage: image.CGImage
-                                                          scale: 1.0
-                                                    orientation: UIImageOrientationLeft];
-
-    UIImage* flippedImage = [UIImage imageWithCGImage:landscapeImage.CGImage
-                                                scale:landscapeImage.scale
-                                          orientation:UIImageOrientationLeftMirrored];
-
-    return flippedImage;
-}
-
-- (UIImage *)takeScreenshot:(UIView *)wholeScreen {
-    UIGraphicsBeginImageContextWithOptions(wholeScreen.bounds.size, wholeScreen.opaque, 0.0);
-    [wholeScreen drawViewHierarchyInRect:wholeScreen.bounds afterScreenUpdates:YES];
-    UIImage * snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return snapshotImage;
-}
-
-- (void)saveToCameraRoll:(UIImage *)screenShot {
-    // save screengrab to Camera Roll
-    UIImageWriteToSavedPhotosAlbum(screenShot, nil, nil, nil);
-}
-
 - (void)showLookHereArrow {
     __weak typeof(self) weakSelf = self;
 
@@ -262,7 +226,7 @@ static int const SucceedingTimerLimit = 3;
 
     static int counter = 0;
 
-    UIImage *rotatedImage = [self rotateImage:image];
+    UIImage *rotatedImage = [GlobalUtility rotateAndMirrorImage:image rotation:UIImageOrientationLeft];
 
     switch (counter) {
         case 0:
@@ -286,12 +250,14 @@ static int const SucceedingTimerLimit = 3;
             counter = 3;
             break;
 
-        case 3:
+        case 3: {
             self.cameraView.hidden = YES;
             self.imageViewPreview4.image = rotatedImage;
-            self.menuView.hidden = NO;
             counter = 0;
+
+            [self savePhotoImage];
             break;
+        }
 
         default:
             break;
@@ -306,48 +272,19 @@ static int const SucceedingTimerLimit = 3;
     }
 }
 
+- (void)savePhotoImage {
+    __weak typeof(self) weakSelf = self;
 
-#pragma mark - IBActions
+    //RE: TODO check orientation chosen by user here
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        UIImage *image = [GlobalUtility takeScreenshot:weakSelf.view];
+        UIImage *rotatedImage = [GlobalUtility rotateImage:image rotation:UIImageOrientationLeft];
+        weakSelf.finalImage = rotatedImage;
+        [GlobalUtility saveToCameraRoll:rotatedImage];
 
-- (IBAction)emailPhotosButtonTapped:(UIButton *)sender {
-    self.cameraView.hidden = YES;
-
-    self.menuView.hidden = YES;
-
-    self.finalImage = [self takeScreenshot:self.view];
-    [self saveToCameraRoll:[self takeScreenshot:self.view]];
-}
-
-- (IBAction)printPhotosButtonTapped:(UIButton *)sender {
-    //RE: TODO
-    
-}
-
-- (IBAction)retakePhotosButtonTapped:(UIButton *)sender {
-
-    self.timerLimit = StartTimerLimit;
-
-    self.menuView.hidden = YES;
-    self.cameraView.hidden = NO;
-    self.imageViewPreview.image = [UIImage imageNamed:@"placeholder"];
-    self.imageViewPreview2.image = [UIImage imageNamed:@"placeholder"];
-    self.imageViewPreview3.image = [UIImage imageNamed:@"placeholder"];
-    self.imageViewPreview4.image = [UIImage imageNamed:@"placeholder"];
-    self.placeholderLabel1.hidden = NO;
-    self.placeholderLabel2.hidden = NO;
-    self.placeholderLabel3.hidden = NO;
-
-    [self takePhotoBlock];
-}
-
-- (IBAction)discardButtonTapped:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
-
-//    __weak typeof(self) weakSelf = self;
-//
-//    [GlobalUtility showConfirmAlertFromViewController:self title:nil message:@"Discard photos?" confirmButtonTitle:@"Discard" cancelButtonTitle:@"Cancel" completionHandler:^{
-//        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
-//    }];
+        //Segue to SendPhotoViewController
+        [weakSelf performSegueWithIdentifier:@"SegueToSendPhotosViewController" sender:weakSelf];
+    });
 }
 
 #pragma mark - Navigation
@@ -356,7 +293,7 @@ static int const SucceedingTimerLimit = 3;
 
     if ([segue.destinationViewController isKindOfClass:[SendPhotoViewController class]]) {
         SendPhotoViewController *vc = [segue destinationViewController];
-        vc.imageToSend = self.finalImage;
+        vc.photoImage = self.finalImage;
     }
 }
 

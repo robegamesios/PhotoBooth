@@ -136,80 +136,6 @@
                                 <color key="textColor" red="0.0" green="0.89929424349999998" blue="0.0086815898690000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.65000000000000002" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="DI7-qf-RRM">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6t-WB-Uwf">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="270" id="K1n-FC-CwP"/>
-                                        </constraints>
-                                        <state key="normal" image="share"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="emailPhotosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B1x-Nr-qul"/>
-                                            <segue destination="nf5-c7-zAW" kind="show" id="UYz-10-pLu"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMA-wR-eNc">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="270" id="JGe-uZ-hja"/>
-                                            <constraint firstAttribute="width" constant="60" id="OQw-hb-TQa"/>
-                                        </constraints>
-                                        <state key="normal" image="discard"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="discardButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xtQ-oB-Wvr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-a0-uNG">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="270" id="0f2-0v-Z2D"/>
-                                            <constraint firstAttribute="width" constant="60" id="mch-Vr-aMk"/>
-                                        </constraints>
-                                        <state key="normal" image="print"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="printPhotosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Xp-uB-gXk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hac-cb-iL2">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="270" id="xnN-uY-3Sn"/>
-                                        </constraints>
-                                        <state key="normal" image="retake"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="retakePhotosButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oKJ-zJ-GQH"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="hac-cb-iL2" firstAttribute="centerY" secondItem="CMA-wR-eNc" secondAttribute="centerY" id="9LW-yH-VPB"/>
-                                    <constraint firstItem="e6t-WB-Uwf" firstAttribute="centerY" secondItem="w9T-a0-uNG" secondAttribute="centerY" id="9op-ff-lb8"/>
-                                    <constraint firstItem="w9T-a0-uNG" firstAttribute="centerY" secondItem="hac-cb-iL2" secondAttribute="centerY" id="Co3-af-wY4"/>
-                                    <constraint firstAttribute="height" constant="340" id="Nw5-Cd-Uwb"/>
-                                    <constraint firstAttribute="width" constant="340" id="bbh-II-oY7"/>
-                                    <constraint firstItem="e6t-WB-Uwf" firstAttribute="leading" secondItem="w9T-a0-uNG" secondAttribute="trailing" constant="20" id="bzQ-Sg-psv"/>
-                                    <constraint firstItem="hac-cb-iL2" firstAttribute="centerY" secondItem="e6t-WB-Uwf" secondAttribute="centerY" id="cnl-hx-z2Y"/>
-                                    <constraint firstItem="CMA-wR-eNc" firstAttribute="centerY" secondItem="DI7-qf-RRM" secondAttribute="centerY" id="fa4-pv-Lms"/>
-                                    <constraint firstItem="w9T-a0-uNG" firstAttribute="leading" secondItem="hac-cb-iL2" secondAttribute="trailing" constant="20" id="gig-kt-GWH"/>
-                                    <constraint firstItem="CMA-wR-eNc" firstAttribute="leading" secondItem="DI7-qf-RRM" secondAttribute="leading" constant="24" id="kMo-Me-JFJ"/>
-                                    <constraint firstItem="hac-cb-iL2" firstAttribute="leading" secondItem="CMA-wR-eNc" secondAttribute="trailing" constant="20" id="nkV-uZ-bmG"/>
-                                    <constraint firstAttribute="trailing" secondItem="e6t-WB-Uwf" secondAttribute="trailing" constant="24" id="tjr-X8-UT7"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPo-s0-hCB">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -234,7 +160,6 @@
                             <constraint firstItem="p2h-Gt-lev" firstAttribute="centerY" secondItem="RN9-oF-dsP" secondAttribute="centerY" id="Tvm-nr-9X3"/>
                             <constraint firstItem="ChX-1i-Wfj" firstAttribute="top" secondItem="Nwj-Ok-dc7" secondAttribute="bottom" constant="-600" id="VP8-gH-0Nd"/>
                             <constraint firstItem="XqU-DY-Thr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Vlp-1X-A4o"/>
-                            <constraint firstItem="DI7-qf-RRM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="azk-uS-Ecc"/>
                             <constraint firstItem="ChX-1i-Wfj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="cfY-q0-VSu"/>
                             <constraint firstItem="pXN-w9-eB4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="eJq-iG-Tvh"/>
                             <constraint firstItem="u83-Ez-oXE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="55:256" id="eOm-mb-E9D"/>
@@ -249,7 +174,6 @@
                             <constraint firstItem="Lgb-Bf-qpA" firstAttribute="width" secondItem="Lgb-Bf-qpA" secondAttribute="height" multiplier="1:1" id="mr2-nA-gHx"/>
                             <constraint firstItem="pXN-w9-eB4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qx6-2x-vtt"/>
                             <constraint firstItem="Lhm-8y-RgG" firstAttribute="centerY" secondItem="u83-Ez-oXE" secondAttribute="centerY" id="wRs-9H-xwT"/>
-                            <constraint firstItem="DI7-qf-RRM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xUH-U7-oHq"/>
                             <constraint firstItem="DEJ-uW-lxQ" firstAttribute="centerX" secondItem="Lhm-8y-RgG" secondAttribute="centerX" id="ygB-4R-1su"/>
                             <constraint firstItem="DEJ-uW-lxQ" firstAttribute="width" secondItem="DEJ-uW-lxQ" secondAttribute="height" multiplier="1:1" id="zHv-eD-Wz9"/>
                             <constraint firstItem="Nwj-Ok-dc7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="25" id="zJs-p6-H3u"/>
@@ -258,8 +182,6 @@
                     <connections>
                         <outlet property="cameraView" destination="ChX-1i-Wfj" id="BBp-Kt-2zI"/>
                         <outlet property="countdownLabel" destination="OrY-cU-vHP" id="sLu-Y4-b4c"/>
-                        <outlet property="discardPhotosButton" destination="CMA-wR-eNc" id="qqT-bJ-aN6"/>
-                        <outlet property="emailPhotosButton" destination="e6t-WB-Uwf" id="RlA-OW-hzS"/>
                         <outlet property="flashView" destination="vPo-s0-hCB" id="exe-EC-Xa9"/>
                         <outlet property="imageViewBg" destination="pXN-w9-eB4" id="5RT-MB-1fJ"/>
                         <outlet property="imageViewLookHere" destination="XqU-DY-Thr" id="poY-Ux-jaf"/>
@@ -267,13 +189,11 @@
                         <outlet property="imageViewPreview2" destination="Lhm-8y-RgG" id="YZ0-4P-wyo"/>
                         <outlet property="imageViewPreview3" destination="u83-Ez-oXE" id="mcY-nu-bB5"/>
                         <outlet property="imageViewPreview4" destination="Nwj-Ok-dc7" id="RcY-8N-3Oy"/>
-                        <outlet property="menuView" destination="DI7-qf-RRM" id="eMY-VI-e1g"/>
                         <outlet property="placeholderLabel1" destination="p2h-Gt-lev" id="Eya-6K-12l"/>
                         <outlet property="placeholderLabel2" destination="DEJ-uW-lxQ" id="p5o-5N-d3U"/>
                         <outlet property="placeholderLabel3" destination="Lgb-Bf-qpA" id="CKn-YT-9SC"/>
-                        <outlet property="printPhotosButton" destination="w9T-a0-uNG" id="HLI-cK-Wko"/>
-                        <outlet property="retakePhotosButton" destination="hac-cb-iL2" id="LnQ-G5-Cbv"/>
                         <segue destination="8SJ-HR-mIc" kind="unwind" identifier="unwindToIntroScreen" unwindAction="unwindToIntroScreen:" id="Vll-Y5-7h7"/>
+                        <segue destination="nf5-c7-zAW" kind="show" identifier="SegueToSendPhotosViewController" id="13o-Pr-RMI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -294,10 +214,85 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankYou" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-9Z-dws"/>
+                            <view alpha="0.64999997615814209" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uU9-LJ-uFC">
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGi-9X-dd1">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="KUe-zw-a93"/>
+                                            <constraint firstAttribute="width" constant="270" id="lES-P5-fqy"/>
+                                        </constraints>
+                                        <state key="normal" image="buttonEmail"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="emailPhotosButtonTapped:" destination="nf5-c7-zAW" eventType="touchUpInside" id="IU2-tG-gEv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-DP-Jd8">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="270" id="R7H-tk-yBI"/>
+                                            <constraint firstAttribute="height" constant="60" id="Vs8-cq-EwI"/>
+                                        </constraints>
+                                        <state key="normal" image="buttonPrint"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="printPhotosButtonTapped:" destination="nf5-c7-zAW" eventType="touchUpInside" id="V0C-T9-xRQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8x-GV-4f0">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="270" id="VpG-fp-sKk"/>
+                                            <constraint firstAttribute="height" constant="60" id="lMD-rn-ZWt"/>
+                                        </constraints>
+                                        <state key="normal" image="buttonDone"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="nf5-c7-zAW" eventType="touchUpInside" id="ou6-Tv-6WS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqW-5O-ZJQ">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="270" id="o6C-Sg-qo5"/>
+                                            <constraint firstAttribute="height" constant="60" id="oWW-8K-QL9"/>
+                                        </constraints>
+                                        <state key="normal" image="buttonShare"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="nf5-c7-zAW" eventType="touchUpInside" id="mOe-k4-rOa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="h8x-GV-4f0" firstAttribute="top" secondItem="OqW-5O-ZJQ" secondAttribute="bottom" constant="15" id="0iq-nM-Gxg"/>
+                                    <constraint firstItem="JGi-9X-dd1" firstAttribute="centerX" secondItem="uU9-LJ-uFC" secondAttribute="centerX" id="3HZ-2g-DHh"/>
+                                    <constraint firstAttribute="width" constant="300" id="60R-FJ-b8V"/>
+                                    <constraint firstItem="CqV-DP-Jd8" firstAttribute="top" secondItem="JGi-9X-dd1" secondAttribute="bottom" constant="15" id="7dl-TX-hMQ"/>
+                                    <constraint firstItem="OqW-5O-ZJQ" firstAttribute="top" secondItem="CqV-DP-Jd8" secondAttribute="bottom" constant="15" id="VgV-2M-J7f"/>
+                                    <constraint firstItem="JGi-9X-dd1" firstAttribute="top" secondItem="uU9-LJ-uFC" secondAttribute="top" constant="15" id="WbU-5X-wKt"/>
+                                    <constraint firstItem="h8x-GV-4f0" firstAttribute="centerX" secondItem="OqW-5O-ZJQ" secondAttribute="centerX" id="cKI-l2-1pp"/>
+                                    <constraint firstItem="OqW-5O-ZJQ" firstAttribute="centerX" secondItem="CqV-DP-Jd8" secondAttribute="centerX" id="nNc-UA-k5W"/>
+                                    <constraint firstItem="JGi-9X-dd1" firstAttribute="centerX" secondItem="CqV-DP-Jd8" secondAttribute="centerX" id="rY8-NO-Hvj"/>
+                                    <constraint firstAttribute="height" constant="315" id="y7d-dj-oPK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94166773560000006" green="0.38437581059999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5X9-9Z-dws" secondAttribute="trailing" id="Gpk-jb-ci1"/>
+                            <constraint firstItem="uU9-LJ-uFC" firstAttribute="centerY" secondItem="P30-p9-lum" secondAttribute="centerY" id="MxX-8c-jYL"/>
+                            <constraint firstItem="uU9-LJ-uFC" firstAttribute="centerX" secondItem="P30-p9-lum" secondAttribute="centerX" id="jH5-Ph-5Rm"/>
                             <constraint firstItem="OWV-lK-nyA" firstAttribute="top" secondItem="5X9-9Z-dws" secondAttribute="bottom" id="mYk-S1-kv0"/>
                             <constraint firstItem="5X9-9Z-dws" firstAttribute="leading" secondItem="P30-p9-lum" secondAttribute="leading" id="pcV-Hv-YcC"/>
                             <constraint firstItem="5X9-9Z-dws" firstAttribute="top" secondItem="P30-p9-lum" secondAttribute="top" id="sIw-Pd-5TF"/>
@@ -305,6 +300,7 @@
                     </view>
                     <connections>
                         <outlet property="imageViewThankYou" destination="5X9-9Z-dws" id="0jO-Hm-CnG"/>
+                        <outlet property="menuView" destination="uU9-LJ-uFC" id="FIY-B9-EOb"/>
                         <segue destination="Ata-0e-MCX" kind="unwind" identifier="unwindToIntroScreen" unwindAction="unwindToIntroScreen:" id="60h-2f-3io"/>
                     </connections>
                 </viewController>
@@ -316,13 +312,13 @@
     </scenes>
     <resources>
         <image name="bg1" width="768" height="1024"/>
-        <image name="discard" width="56" height="274"/>
+        <image name="buttonDone" width="274" height="56"/>
+        <image name="buttonEmail" width="274" height="56"/>
+        <image name="buttonPrint" width="274" height="56"/>
+        <image name="buttonShare" width="274" height="56"/>
         <image name="lookHere" width="84" height="84"/>
         <image name="micko2" width="1024" height="768"/>
         <image name="placeholder" width="178" height="237"/>
-        <image name="print" width="56" height="274"/>
-        <image name="retake" width="56" height="274"/>
-        <image name="share" width="56" height="274"/>
         <image name="tapHere2" width="380" height="44"/>
         <image name="thankYou" width="1029" height="772"/>
     </resources>
