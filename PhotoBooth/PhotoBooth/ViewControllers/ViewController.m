@@ -68,7 +68,7 @@ static int const SucceedingTimerLimit = 3;
     return UIInterfaceOrientationMaskPortrait;
 }
 
--(NSUInteger)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController {
+-(UIInterfaceOrientationMask)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController {
     return UIInterfaceOrientationMaskPortrait;
 }
 

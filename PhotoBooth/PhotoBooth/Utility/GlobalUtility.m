@@ -7,6 +7,8 @@
 //
 
 #import "GlobalUtility.h"
+#import <Realm/RLMRealm.h>
+#import "IntroScreenImagesModel.h"
 
 @implementation GlobalUtility
 
@@ -202,6 +204,61 @@
 
 + (BOOL)isConnected {
     return [AFNetworkReachabilityManager sharedManager].reachable;
+}
+
+
+#pragma mark - Realm
+
++ (void)saveImageToRealm:(UIImage *)image screenType:(ScreenType)screenType {
+
+    RLMRealm *realm = [RLMRealm defaultRealm];
+
+    [realm beginWriteTransaction];
+
+    switch (screenType) {
+        case ScreenTypeIntro:
+
+            break;
+
+        default:
+            break;
+    }
+
+    if (screenType == ScreenTypeIntro) {
+        IntroScreenImagesModel *model = [[IntroScreenImagesModel alloc]init];
+        model.imageData = [NSData dataWithData:UIImageJPEGRepresentation(image, 0)];;
+        [realm addObject:model];
+
+    } else if (screenType == ScreenTypeLayout) {
+
+    } else if (screenType == ScreenTypeSendPhoto) {
+
+    }
+
+
+    [realm commitWriteTransaction];
+}
+
++ (NSArray *)retrieveAllImages:(ScreenType)screenType {
+
+    NSMutableArray *array = [NSMutableArray new];
+
+    if (screenType == ScreenTypeIntro) {
+        RLMResults *results = [IntroScreenImagesModel allObjects];
+
+        for (IntroScreenImagesModel *data in results) {
+            UIImage *image = [UIImage imageWithData:data.imageData];
+            [array addObject:image];
+        }
+
+    } else if (screenType == ScreenTypeLayout) {
+
+    } else if (screenType == ScreenTypeSendPhoto) {
+
+    }
+
+
+    return array.copy;
 }
 
 @end

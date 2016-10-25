@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  PhotoBooth
+//
+//  Created by Rob Enriquez on 10/25/16.
+//  Copyright © 2016 robert enriquez. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "GlobalConstants.h"
+
+
+#endif /* PrefixHeader_pch */

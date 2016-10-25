@@ -10,14 +10,6 @@
 #import "AFNetworkReachabilityManager.h"
 @import UIKit;
 
-#pragma mark - Typedefs
-
-typedef void(^VoidBlock)(void);
-typedef void(^SuccessBlock)(id responseObject);
-typedef void(^TwoResultBlock)(id obj1, id obj2);
-typedef void(^TwoIntResultBlock)(int obj1, int obj2);
-typedef void(^ErrorBlock)(NSString *errorString);
-
 @interface GlobalUtility : NSObject
 
 + (void)showAlertFromNavigationController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler;
@@ -39,5 +31,9 @@ typedef void(^ErrorBlock)(NSString *errorString);
 + (void)saveToCameraRoll:(UIImage *)screenShot;
 
 + (BOOL)isConnected;
+
++ (void)saveImageToRealm:(UIImage *)image screenType:(ScreenType)screenType;
+
++ (NSArray *)retrieveAllImages:(ScreenType)screenType;
 
 @end

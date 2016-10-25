@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="R8l-Aw-Qzh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="R8l-Aw-Qzh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="micko2" translatesAutoresizingMaskIntoConstraints="NO" id="Weq-xM-6Jt"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Weq-xM-6Jt" customClass="YCSlideShowImageView"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdK-rp-hNC">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="dTe-Jx-K4E"/>
@@ -35,6 +35,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="wHp-bb-Y1p"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDo-eQ-lN2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Jz0-m0-LOB"/>
+                                    <constraint firstAttribute="width" constant="80" id="T6q-2W-aia"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="R8l-Aw-Qzh" eventType="touchUpInside" id="Fj6-gq-ZhZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -42,10 +52,16 @@
                             <constraint firstAttribute="trailing" secondItem="Weq-xM-6Jt" secondAttribute="trailing" id="45S-WM-MHB"/>
                             <constraint firstItem="DdK-rp-hNC" firstAttribute="centerX" secondItem="aPe-jE-UgF" secondAttribute="centerX" id="EBt-Z6-BaI"/>
                             <constraint firstItem="Weq-xM-6Jt" firstAttribute="top" secondItem="aPe-jE-UgF" secondAttribute="top" id="PPM-PC-gTJ"/>
+                            <constraint firstAttribute="trailing" secondItem="RDo-eQ-lN2" secondAttribute="trailing" constant="20" id="Ph2-cY-FY4"/>
+                            <constraint firstItem="AjR-C1-7Vb" firstAttribute="top" secondItem="RDo-eQ-lN2" secondAttribute="bottom" constant="20" id="Skc-UX-AQ9"/>
                             <constraint firstItem="DdK-rp-hNC" firstAttribute="top" secondItem="Weq-xM-6Jt" secondAttribute="bottom" constant="-100" id="bxM-dc-idk"/>
                             <constraint firstItem="Weq-xM-6Jt" firstAttribute="leading" secondItem="aPe-jE-UgF" secondAttribute="leading" id="gOY-FM-9JN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="Weq-xM-6Jt" id="z8g-u1-XsK"/>
+                        <outlet property="settingsButton" destination="RDo-eQ-lN2" id="0BG-7a-2qt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mr-nZ-NQt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,7 +333,6 @@
         <image name="buttonPrint" width="274" height="56"/>
         <image name="buttonShare" width="274" height="56"/>
         <image name="lookHere" width="84" height="84"/>
-        <image name="micko2" width="1024" height="768"/>
         <image name="placeholder" width="178" height="237"/>
         <image name="tapHere2" width="380" height="44"/>
         <image name="thankYou" width="1029" height="772"/>

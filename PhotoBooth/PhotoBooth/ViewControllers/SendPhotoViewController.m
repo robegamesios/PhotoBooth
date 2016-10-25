@@ -38,7 +38,7 @@
     return UIInterfaceOrientationMaskLandscapeRight;
 }
 
--(NSUInteger)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController {
+-(UIInterfaceOrientationMask)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController {
     return UIInterfaceOrientationMaskLandscapeRight;
 }
 
