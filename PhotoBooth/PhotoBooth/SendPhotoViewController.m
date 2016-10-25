@@ -11,8 +11,11 @@
 #import "GlobalUtility.h"
 @import Photos;
 
-@interface SendPhotoViewController () <MFMailComposeViewControllerDelegate>
+@interface SendPhotoViewController () <MFMailComposeViewControllerDelegate, UIPrintInteractionControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewThankYou;
+@property (weak, nonatomic) IBOutlet UIView *menuView;
+
+@property (strong, nonatomic) UIImage *printImage;
 
 @end
 
@@ -27,9 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    self.imageViewThankYou.hidden = YES;
-
-    [self showEmail:self.imageToSend];
+    self.imageViewThankYou.image = self.photoImage;
 }
 
 // Lock orientation
@@ -51,7 +52,8 @@
 
     NSString *htmlMsg = @"<html><body><p>Baby Micko had an amazing time at his first birthday!<br>Thank you for making his day wonderful with your warm presence, thoughtful gift, and kind words.<br><br>Sincerely,<br>Rob & Joy</p></body></html>";
 
-    NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(emailImage, 1.0)];
+    UIImage *rotatedImage = [GlobalUtility rotateImage:emailImage rotation:UIImageOrientationUp];
+    NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(rotatedImage, 1.0)];
 
     NSString *fileName = @"photo";
     fileName = [fileName stringByAppendingPathExtension:@"jpeg"];
@@ -70,8 +72,6 @@
 #pragma mark - MFMailComposeViewControllerDelegate methods
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-
-    __weak typeof(self) weakSelf = self;
 
     NSString *message = nil;
 
@@ -107,18 +107,95 @@
         }
     }
 
-    self.imageViewThankYou.hidden = NO;
-
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:nil];
+}
 
-    [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:^{
-        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:self];
-    }];
+
+#pragma mark - IBActions
+
+- (IBAction)emailPhotosButtonTapped:(UIButton *)sender {
+    [self showEmail:self.photoImage];
+}
+
+- (IBAction)printPhotosButtonTapped:(UIButton *)sender {
+    //RE: TODO 7x5 for now
+    UIImage *resizedImage = [GlobalUtility resizedImage:self.photoImage width:7 height:5];
+    [self airprintInfo:resizedImage];
+}
+
+- (IBAction)shareButtonTapped:(UIButton *)sender {
+    [self showShareSheet:self.photoImage];
+}
+
+- (IBAction)doneButtonTapped:(UIButton *)sender {
+
+    __weak typeof(self) weakSelf = self;
+
+    self.menuView.hidden = YES;
+
+    //RE:TODO
+    self.imageViewThankYou.image = [UIImage imageNamed:@"thankYou"];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
+    });
 }
 
 
 #pragma mark - Helpers
+
+- (void)airprintInfo:(UIImage *)info {
+
+    __weak typeof(self) weakSelf = self;
+
+    if ([UIPrintInteractionController isPrintingAvailable]) {
+
+        UIPrintInteractionController *print = [UIPrintInteractionController sharedPrintController];
+
+        print.delegate = self;
+        UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+        printInfo.outputType = UIPrintInfoOutputPhoto;
+        printInfo.jobName =@"PartyPhotoBoothPhoto";
+        print.printInfo = printInfo;
+        print.showsPageRange = NO;
+        print.printingItem = info;
+
+        void (^completionHandler)(UIPrintInteractionController *,BOOL, NSError *) = ^(UIPrintInteractionController *print,BOOL completed, NSError *error) {
+            if (!completed && error) {
+                [GlobalUtility showAlertFromViewController:weakSelf title:nil message:error.localizedDescription completionHandler:nil];
+            }
+        };
+
+        [print presentAnimated:YES completionHandler:completionHandler];
+    }
+}
+
+//- (UIPrintPaper *)printInteractionController:(UIPrintInteractionController *)printInteractionController choosePaper:(NSArray<UIPrintPaper *> *)paperList {
+//
+//    if (paperList.count) {
+//        self.printImage = [GlobalUtility resizedImage:self.photoImage width:paperList.firstObject.paperSize.width height:paperList.firstObject.paperSize.height];
+//    }
+//
+//    return paperList.firstObject;
+//}
+
+- (void)showShareSheet:(UIImage *)image {
+    NSString *htmlMsg = @"";
+
+    NSString *shareText = htmlMsg;
+    NSArray *items = @[shareText];
+    UIActivityViewController *vc = [[UIActivityViewController alloc]initWithActivityItems:@[items,image] applicationActivities:nil];
+
+    vc.excludedActivityTypes = @[UIActivityTypeMail, UIActivityTypePrint];
+
+    //ipad
+    vc.popoverPresentationController.sourceView = self.view;
+    vc.popoverPresentationController.sourceRect = self.menuView.frame;
+
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 //
 //- (void)fetchLastImageFromCameraRoll {
 //

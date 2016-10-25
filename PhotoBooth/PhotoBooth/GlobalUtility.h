@@ -28,6 +28,16 @@ typedef void(^ErrorBlock)(NSString *errorString);
 
 + (void)showConfirmAlertFromViewController:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle cancelButtonTitle:(NSString *)cancelButtonTitle completionHandler:(VoidBlock)completionHandler;
 
++ (UIImage *)rotateImage:(UIImage *)image rotation:(UIImageOrientation)orientation;
+
++ (UIImage *)rotateAndMirrorImage:(UIImage *)image rotation:(UIImageOrientation)orientation;
+
++(UIImage *)resizedImage:(UIImage *)image width:(int)width height:(int)height;
+
++ (UIImage *)takeScreenshot:(UIView *)wholeScreen;
+
++ (void)saveToCameraRoll:(UIImage *)screenShot;
+
 + (BOOL)isConnected;
 
 @end

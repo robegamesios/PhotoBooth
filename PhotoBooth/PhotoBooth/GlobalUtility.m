@@ -128,6 +128,78 @@
     [viewController presentViewController:alert animated:YES completion:nil];
 }
 
+
+#pragma mark - Photo methods
+
++ (UIImage *)rotateImage:(UIImage *)image rotation:(UIImageOrientation)orientation {
+
+    UIImage * newImage = [[UIImage alloc] initWithCGImage: image.CGImage
+                                                    scale: 1.0
+                                              orientation: orientation];
+
+    return newImage;
+}
+
++ (UIImage *)rotateAndMirrorImage:(UIImage *)image rotation:(UIImageOrientation)orientation {
+
+    UIImageOrientation mirroredOrientation = 0;
+
+    switch (orientation) {
+        case UIImageOrientationUp:
+            mirroredOrientation = UIImageOrientationUpMirrored;
+            break;
+
+        case UIImageOrientationDown:
+            mirroredOrientation = UIImageOrientationDownMirrored;
+            break;
+
+        case UIImageOrientationLeft:
+            mirroredOrientation = UIImageOrientationLeftMirrored;
+            break;
+
+        case UIImageOrientationRight:
+            mirroredOrientation = UIImageOrientationRightMirrored;
+            break;
+
+        default:
+            break;
+    }
+    UIImage * newImage = [[UIImage alloc] initWithCGImage: image.CGImage
+                                                    scale: 1.0
+                                              orientation: orientation];
+
+    UIImage* flippedImage = [UIImage imageWithCGImage:newImage.CGImage
+                                                scale:newImage.scale
+                                          orientation:mirroredOrientation];
+    
+    return flippedImage;
+}
+
++(UIImage *)resizedImage:(UIImage *)image width:(int)width height:(int)height {
+
+    int newWidth = width * 72;
+    int newHeight = height * 72;
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [image drawInRect:CGRectMake(0,0,newWidth, newHeight)];
+    UIImage *resizedImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resizedImg;
+}
+
++ (UIImage *)takeScreenshot:(UIView *)wholeScreen {
+    UIGraphicsBeginImageContextWithOptions(wholeScreen.bounds.size, wholeScreen.opaque, 0.0);
+    [wholeScreen drawViewHierarchyInRect:wholeScreen.bounds afterScreenUpdates:YES];
+    UIImage * snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return snapshotImage;
+}
+
++ (void)saveToCameraRoll:(UIImage *)screenShot {
+    // save screengrab to Camera Roll
+    UIImageWriteToSavedPhotosAlbum(screenShot, nil, nil, nil);
+}
+
 + (BOOL)isConnected {
     return [AFNetworkReachabilityManager sharedManager].reachable;
 }
