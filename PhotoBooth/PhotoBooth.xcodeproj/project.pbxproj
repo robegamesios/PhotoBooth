@@ -21,6 +21,8 @@
 		565F12901DACB76F00B96C52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F128E1DACB76F00B96C52 /* Main.storyboard */; };
 		565F12921DACB76F00B96C52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565F12911DACB76F00B96C52 /* Assets.xcassets */; };
 		565F12951DACB76F00B96C52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F12931DACB76F00B96C52 /* LaunchScreen.storyboard */; };
+		56A29A651DC0A0DC003FDCCA /* SmartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A29A641DC0A0DC003FDCCA /* SmartLabel.m */; };
+		56A29A681DC1ED33003FDCCA /* SmartSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A29A671DC1ED33003FDCCA /* SmartSlider.m */; };
 		56F6DCC91DADE9CE002F7D23 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC71DADE9CD002F7D23 /* Photos.framework */; };
 		56F6DCCA1DADE9CE002F7D23 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,10 @@
 		565F12911DACB76F00B96C52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565F12941DACB76F00B96C52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		565F12961DACB76F00B96C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56A29A631DC0A0DC003FDCCA /* SmartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartLabel.h; sourceTree = "<group>"; };
+		56A29A641DC0A0DC003FDCCA /* SmartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartLabel.m; sourceTree = "<group>"; };
+		56A29A661DC1ED33003FDCCA /* SmartSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartSlider.h; sourceTree = "<group>"; };
+		56A29A671DC1ED33003FDCCA /* SmartSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartSlider.m; sourceTree = "<group>"; };
 		56F6DCC71DADE9CD002F7D23 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoBooth.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +132,10 @@
 			children = (
 				5657817A1DBFC488006BD749 /* IntroScreenImagesModel.h */,
 				5657817B1DBFC488006BD749 /* IntroScreenImagesModel.m */,
+				56A29A631DC0A0DC003FDCCA /* SmartLabel.h */,
+				56A29A641DC0A0DC003FDCCA /* SmartLabel.m */,
+				56A29A661DC1ED33003FDCCA /* SmartSlider.h */,
+				56A29A671DC1ED33003FDCCA /* SmartSlider.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,8 +320,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				565781741DBFC3F0006BD749 /* ViewController.m in Sources */,
+				56A29A651DC0A0DC003FDCCA /* SmartLabel.m in Sources */,
 				565781731DBFC3F0006BD749 /* SendPhotoViewController.m in Sources */,
 				565781821DC01694006BD749 /* GlobalConstants.m in Sources */,
+				56A29A681DC1ED33003FDCCA /* SmartSlider.m in Sources */,
 				565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */,
 				5657817C1DBFC488006BD749 /* IntroScreenImagesModel.m in Sources */,
 				565781711DBFC3F0006BD749 /* GlobalUtility.m in Sources */,

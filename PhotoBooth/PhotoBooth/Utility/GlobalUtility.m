@@ -215,15 +215,6 @@
 
     [realm beginWriteTransaction];
 
-    switch (screenType) {
-        case ScreenTypeIntro:
-
-            break;
-
-        default:
-            break;
-    }
-
     if (screenType == ScreenTypeIntro) {
         IntroScreenImagesModel *model = [[IntroScreenImagesModel alloc]init];
         model.imageData = [NSData dataWithData:UIImageJPEGRepresentation(image, 0)];;
