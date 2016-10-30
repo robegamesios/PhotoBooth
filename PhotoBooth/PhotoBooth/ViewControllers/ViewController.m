@@ -49,6 +49,7 @@ static int const SucceedingTimerLimit = 3;
     [super viewWillAppear:animated];
 
     [self setupLabels];
+    [self setupImageViews];
     [self hideElements:YES];
 }
 
@@ -61,6 +62,13 @@ static int const SucceedingTimerLimit = 3;
         [weakSelf hideElements:NO];
         [weakSelf startPhotoShoot];
     });
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+
+    self.cameraView = nil;
+    self.cameraView.delegate = nil;
+    [super viewWillDisappear:animated];
 }
 
 // Lock orientation
@@ -83,6 +91,26 @@ static int const SucceedingTimerLimit = 3;
     self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
 
     self.timerLimit = StartTimerLimit;
+}
+
+- (void)setupImageViews {
+    UIColor *borderColor = [UIColor whiteColor];
+    float borderWidth = 10.f;
+
+    self.cameraView.layer.borderColor = borderColor.CGColor;
+    self.cameraView.layer.borderWidth = borderWidth;
+
+    self.imageViewPreview.layer.borderColor = borderColor.CGColor;
+    self.imageViewPreview.layer.borderWidth = borderWidth;
+
+    self.imageViewPreview2.layer.borderColor = borderColor.CGColor;
+    self.imageViewPreview2.layer.borderWidth = borderWidth;
+
+    self.imageViewPreview3.layer.borderColor = borderColor.CGColor;
+    self.imageViewPreview3.layer.borderWidth = borderWidth;
+
+    self.imageViewPreview4.layer.borderColor = borderColor.CGColor;
+    self.imageViewPreview4.layer.borderWidth = borderWidth;
 }
 
 - (void)hideElements:(BOOL)status {
@@ -267,8 +295,9 @@ static int const SucceedingTimerLimit = 3;
 - (void)cameraView:(AWCameraView *)cameraView didErrorOnTakePicture:(NSError *)error {
 
     if (error) {
-        NSString *message = @"Oops! Unable to take your pic. Please try again";
-        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
+        NSLog(@"ViewController: CameraView didError taking picture");
+//        NSString *message = @"Oops! Unable to take your pic. Please try again";
+//        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
     }
 }
 
