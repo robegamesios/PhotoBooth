@@ -19,6 +19,20 @@
 		565F12901DACB76F00B96C52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F128E1DACB76F00B96C52 /* Main.storyboard */; };
 		565F12921DACB76F00B96C52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565F12911DACB76F00B96C52 /* Assets.xcassets */; };
 		565F12951DACB76F00B96C52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F12931DACB76F00B96C52 /* LaunchScreen.storyboard */; };
+		56BE418C1DC5F0B700FE3B38 /* SendPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */; };
+		56BE418D1DC5F0B700FE3B38 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558D1DB4C3560071A4B3 /* IntroViewController.m */; };
+		56BE418E1DC5F0B700FE3B38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F128C1DACB76F00B96C52 /* ViewController.m */; };
+		56BE418F1DC5F0B700FE3B38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12891DACB76F00B96C52 /* AppDelegate.m */; };
+		56BE41901DC5F0B700FE3B38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12861DACB76F00B96C52 /* main.m */; };
+		56BE41911DC5F0B700FE3B38 /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 562455841DB49EC40071A4B3 /* GlobalUtility.m */; };
+		56BE41931DC5F0B700FE3B38 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC71DADE9CD002F7D23 /* Photos.framework */; };
+		56BE41941DC5F0B700FE3B38 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */; };
+		56BE41951DC5F0B700FE3B38 /* libPods-PhotoBooth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */; };
+		56BE41971DC5F0B700FE3B38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F12931DACB76F00B96C52 /* LaunchScreen.storyboard */; };
+		56BE41981DC5F0B700FE3B38 /* Doctor Soos Bold 2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */; };
+		56BE41991DC5F0B700FE3B38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565F12911DACB76F00B96C52 /* Assets.xcassets */; };
+		56BE419A1DC5F0B700FE3B38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565F128E1DACB76F00B96C52 /* Main.storyboard */; };
+		56BE419B1DC5F0B700FE3B38 /* Doctor Soos Light 1.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */; };
 		56F6DCC91DADE9CE002F7D23 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC71DADE9CD002F7D23 /* Photos.framework */; };
 		56F6DCCA1DADE9CE002F7D23 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +57,8 @@
 		565F12911DACB76F00B96C52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565F12941DACB76F00B96C52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		565F12961DACB76F00B96C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56BE41A11DC5F0B700FE3B38 /* PhotoBooth-Richard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoBooth-Richard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56BE41A21DC5F0B900FE3B38 /* PhotoBooth copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PhotoBooth copy-Info.plist"; path = "/Users/robenriquez/PhotoBooth/PhotoBooth/PhotoBooth copy-Info.plist"; sourceTree = "<absolute>"; };
 		56F6DCC71DADE9CD002F7D23 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoBooth.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +73,16 @@
 				56F6DCC91DADE9CE002F7D23 /* Photos.framework in Frameworks */,
 				56F6DCCA1DADE9CE002F7D23 /* PhotosUI.framework in Frameworks */,
 				2FE390511D5E24E39B43FFC4 /* libPods-PhotoBooth.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BE41921DC5F0B700FE3B38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56BE41931DC5F0B700FE3B38 /* Photos.framework in Frameworks */,
+				56BE41941DC5F0B700FE3B38 /* PhotosUI.framework in Frameworks */,
+				56BE41951DC5F0B700FE3B38 /* libPods-PhotoBooth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +114,7 @@
 				565F12831DACB76F00B96C52 /* Products */,
 				14F00B29933C7F9207698EB0 /* Pods */,
 				E34231AA062647350EC4C689 /* Frameworks */,
+				56BE41A21DC5F0B900FE3B38 /* PhotoBooth copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				565F12821DACB76F00B96C52 /* PhotoBooth.app */,
+				56BE41A11DC5F0B700FE3B38 /* PhotoBooth-Richard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +191,26 @@
 			productReference = 565F12821DACB76F00B96C52 /* PhotoBooth.app */;
 			productType = "com.apple.product-type.application";
 		};
+		56BE41891DC5F0B700FE3B38 /* PhotoBooth-Richard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56BE419E1DC5F0B700FE3B38 /* Build configuration list for PBXNativeTarget "PhotoBooth-Richard" */;
+			buildPhases = (
+				56BE418A1DC5F0B700FE3B38 /* [CP] Check Pods Manifest.lock */,
+				56BE418B1DC5F0B700FE3B38 /* Sources */,
+				56BE41921DC5F0B700FE3B38 /* Frameworks */,
+				56BE41961DC5F0B700FE3B38 /* Resources */,
+				56BE419C1DC5F0B700FE3B38 /* [CP] Embed Pods Frameworks */,
+				56BE419D1DC5F0B700FE3B38 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PhotoBooth-Richard";
+			productName = PhotoBooth;
+			productReference = 56BE41A11DC5F0B700FE3B38 /* PhotoBooth-Richard.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,6 +224,9 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = G87QTK58LT;
 						ProvisioningStyle = Automatic;
+					};
+					56BE41891DC5F0B700FE3B38 = {
+						DevelopmentTeam = G87QTK58LT;
 					};
 				};
 			};
@@ -193,6 +244,7 @@
 			projectRoot = "";
 			targets = (
 				565F12811DACB76F00B96C52 /* PhotoBooth */,
+				56BE41891DC5F0B700FE3B38 /* PhotoBooth-Richard */,
 			);
 		};
 /* End PBXProject section */
@@ -207,6 +259,18 @@
 				565F12921DACB76F00B96C52 /* Assets.xcassets in Resources */,
 				565F12901DACB76F00B96C52 /* Main.storyboard in Resources */,
 				56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BE41961DC5F0B700FE3B38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56BE41971DC5F0B700FE3B38 /* LaunchScreen.storyboard in Resources */,
+				56BE41981DC5F0B700FE3B38 /* Doctor Soos Bold 2.1.ttf in Resources */,
+				56BE41991DC5F0B700FE3B38 /* Assets.xcassets in Resources */,
+				56BE419A1DC5F0B700FE3B38 /* Main.storyboard in Resources */,
+				56BE419B1DC5F0B700FE3B38 /* Doctor Soos Light 1.1.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +290,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		56BE418A1DC5F0B700FE3B38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		56BE419C1DC5F0B700FE3B38 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoBooth/Pods-PhotoBooth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56BE419D1DC5F0B700FE3B38 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoBooth/Pods-PhotoBooth-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7E322AE95689EB97225EB503 /* [CP] Copy Pods Resources */ = {
@@ -271,6 +380,19 @@
 				565F128A1DACB76F00B96C52 /* AppDelegate.m in Sources */,
 				565F12871DACB76F00B96C52 /* main.m in Sources */,
 				562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BE418B1DC5F0B700FE3B38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56BE418C1DC5F0B700FE3B38 /* SendPhotoViewController.m in Sources */,
+				56BE418D1DC5F0B700FE3B38 /* IntroViewController.m in Sources */,
+				56BE418E1DC5F0B700FE3B38 /* ViewController.m in Sources */,
+				56BE418F1DC5F0B700FE3B38 /* AppDelegate.m in Sources */,
+				56BE41901DC5F0B700FE3B38 /* main.m in Sources */,
+				56BE41911DC5F0B700FE3B38 /* GlobalUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +540,38 @@
 			};
 			name = Release;
 		};
+		56BE419F1DC5F0B700FE3B38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA0F5A6EF05C76F878D0F72A /* Pods-PhotoBooth.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = G87QTK58LT;
+				INFOPLIST_FILE = "PhotoBooth copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.robe.games.ios.PartyPhotoBooth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		56BE41A01DC5F0B700FE3B38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17A5FF821C9E087BD5CC9E6F /* Pods-PhotoBooth.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = G87QTK58LT;
+				INFOPLIST_FILE = "PhotoBooth copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.robe.games.ios.PartyPhotoBooth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,6 +589,15 @@
 			buildConfigurations = (
 				565F129A1DACB76F00B96C52 /* Debug */,
 				565F129B1DACB76F00B96C52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56BE419E1DC5F0B700FE3B38 /* Build configuration list for PBXNativeTarget "PhotoBooth-Richard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56BE419F1DC5F0B700FE3B38 /* Debug */,
+				56BE41A01DC5F0B700FE3B38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

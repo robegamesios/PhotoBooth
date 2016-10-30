@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PhotoBooth-Richard.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>PhotoBooth.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>565F12811DACB76F00B96C52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56BE41891DC5F0B700FE3B38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
