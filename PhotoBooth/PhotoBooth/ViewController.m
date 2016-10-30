@@ -295,8 +295,9 @@ static int const SucceedingTimerLimit = 3;
 - (void)cameraView:(AWCameraView *)cameraView didErrorOnTakePicture:(NSError *)error {
 
     if (error) {
-        NSString *message = @"Oops! Unable to take your pic. Please try again";
-        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
+        NSLog(@"ViewController: CameraView didError taking picture");
+//        NSString *message = @"Oops! Unable to take your pic. Please try again";
+//        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
     }
 }
 
