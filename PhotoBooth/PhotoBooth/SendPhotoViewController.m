@@ -138,6 +138,7 @@
     self.imageViewThankYou.image = [UIImage imageNamed:@"3"];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        weakSelf.imageViewThankYou.hidden = YES;
         [weakSelf performSegueWithIdentifier:@"unwindToIntroScreen" sender:weakSelf];
     });
 }

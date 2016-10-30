@@ -64,6 +64,13 @@ static int const SucceedingTimerLimit = 3;
     });
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+
+    self.cameraView = nil;
+    self.cameraView.delegate = nil;
+    [super viewWillDisappear:animated];
+}
+
 // Lock orientation
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
