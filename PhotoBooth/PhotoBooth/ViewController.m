@@ -94,7 +94,7 @@ static int const SucceedingTimerLimit = 3;
 }
 
 - (void)setupImageViews {
-    UIColor *borderColor = [UIColor whiteColor];
+    UIColor *borderColor = [UIColor orangeColor];
     float borderWidth = 10.f;
 
     self.cameraView.layer.borderColor = borderColor.CGColor;
@@ -295,9 +295,8 @@ static int const SucceedingTimerLimit = 3;
 - (void)cameraView:(AWCameraView *)cameraView didErrorOnTakePicture:(NSError *)error {
 
     if (error) {
-        NSLog(@"ViewController: CameraView didError taking picture");
-//        NSString *message = @"Oops! Unable to take your pic. Please try again";
-//        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
+        NSString *message = @"Oops! Unable to take your pic. Please try again";
+        [GlobalUtility showAlertFromViewController:self title:nil message:message completionHandler:nil];
     }
 }
 

@@ -50,7 +50,7 @@
 
     emailDialog.mailComposeDelegate = self;
 
-    NSString *htmlMsg = @"<html><body><p>Baby Micko had an amazing time at his first birthday!<br>Thank you for making his day wonderful with your warm presence, thoughtful gift, and kind words.<br><br>Sincerely,<br>Rob & Joy</p></body></html>";
+    NSString *htmlMsg = @"<html><body><p>https://www.goabra.com</p></body></html>";
 
     UIImage *rotatedImage = [GlobalUtility rotateImage:emailImage rotation:UIImageOrientationUp];
     NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(rotatedImage, 1.0)];
@@ -62,7 +62,7 @@
         [emailDialog addAttachmentData:jpegData mimeType:@"image/jpeg" fileName:fileName];
     }
 
-    [emailDialog setSubject:@"Micko's 1st Birthday Party Photobooth pic"];
+    [emailDialog setSubject:@"ABRA Halloween 2016"];
     [emailDialog setMessageBody:htmlMsg isHTML:YES];
 
     [self presentViewController:emailDialog animated:YES completion:nil];
@@ -135,7 +135,7 @@
     self.menuView.hidden = YES;
 
     //RE:TODO
-    self.imageViewThankYou.image = [UIImage imageNamed:@"thankYou"];
+    self.imageViewThankYou.image = [UIImage imageNamed:@"3"];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         weakSelf.imageViewThankYou.hidden = YES;

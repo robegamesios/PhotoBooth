@@ -27,11 +27,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="micko2" translatesAutoresizingMaskIntoConstraints="NO" id="Weq-xM-6Jt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="Weq-xM-6Jt">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdK-rp-hNC">
-                                <rect key="frame" x="155.5" y="924" width="457" height="80"/>
+                                <rect key="frame" x="156" y="924" width="457" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="dTe-Jx-K4E"/>
                                     <constraint firstAttribute="width" constant="457" id="xBj-0f-Q6j"/>
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21786472200000001" green="0.1474937201" blue="0.39835095409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AjR-C1-7Vb" firstAttribute="top" secondItem="Weq-xM-6Jt" secondAttribute="bottom" id="3Ib-kO-efa"/>
                             <constraint firstAttribute="trailing" secondItem="Weq-xM-6Jt" secondAttribute="trailing" id="45S-WM-MHB"/>
@@ -69,39 +69,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-w9-eB4" userLabel="bg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-w9-eB4" userLabel="bg">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="u83-Ez-oXE">
-                                <rect key="frame" x="25" y="681.5" width="220" height="294.5"/>
+                                <rect key="frame" x="25" y="682" width="220" height="294"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u83-Ez-oXE" secondAttribute="height" multiplier="1936:2592" id="fcr-wM-GgD"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Lhm-8y-RgG">
-                                <rect key="frame" x="274" y="681" width="220" height="295.5"/>
+                                <rect key="frame" x="274" y="682" width="220" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lhm-8y-RgG" secondAttribute="height" multiplier="1936:2592" id="I2N-RX-YzG"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="RN9-oF-dsP">
-                                <rect key="frame" x="523" y="681.5" width="220" height="294.5"/>
+                                <rect key="frame" x="523" y="682" width="220" height="294"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RN9-oF-dsP" secondAttribute="height" multiplier="1936:2592" id="ocU-AH-DxD"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nwj-Ok-dc7">
-                                <rect key="frame" x="25" y="68.5" width="448" height="599.5"/>
+                                <rect key="frame" x="25" y="69" width="448" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Nwj-Ok-dc7" secondAttribute="height" multiplier="1936:2592" id="Xdv-CG-cIj"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChX-1i-Wfj" customClass="AWCameraView">
-                                <rect key="frame" x="25" y="68" width="448" height="599.5"/>
+                                <rect key="frame" x="25" y="68" width="448" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ChX-1i-Wfj" secondAttribute="height" multiplier="1936:2592" id="WKZ-Pv-N30"/>
@@ -125,7 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2h-Gt-lev">
-                                <rect key="frame" x="558.5" y="754" width="150" height="150"/>
+                                <rect key="frame" x="558" y="754" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="BUe-pg-9Bj"/>
                                     <constraint firstAttribute="width" secondItem="p2h-Gt-lev" secondAttribute="height" multiplier="1:1" id="Hq5-us-dGi"/>
@@ -159,7 +159,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94166773560000006" green="0.38437581059999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21786472201347351" green="0.14749372005462646" blue="0.39835095405578613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u83-Ez-oXE" secondAttribute="bottom" constant="48" id="080-x8-dIG"/>
                             <constraint firstItem="vPo-s0-hCB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="0JF-eu-3nE"/>
@@ -232,11 +232,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankYou" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-9Z-dws">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-9Z-dws">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <view alpha="0.64999997615814209" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uU9-LJ-uFC">
-                                <rect key="frame" x="234" y="354.5" width="300" height="315"/>
+                                <rect key="frame" x="234" y="355" width="300" height="315"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGi-9X-dd1">
                                         <rect key="frame" x="15" y="15" width="270" height="60"/>
@@ -314,7 +314,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94166773560000006" green="0.38437581059999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21786472200000001" green="0.1474937201" blue="0.39835095409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5X9-9Z-dws" secondAttribute="trailing" id="Gpk-jb-ci1"/>
                             <constraint firstItem="uU9-LJ-uFC" firstAttribute="centerY" secondItem="P30-p9-lum" secondAttribute="centerY" id="MxX-8c-jYL"/>
@@ -337,15 +337,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg1" width="768" height="1024"/>
+        <image name="1" width="1025" height="768"/>
+        <image name="2" width="768" height="1024"/>
+        <image name="3" width="1024" height="768"/>
         <image name="buttonDone" width="274" height="56"/>
         <image name="buttonEmail" width="274" height="56"/>
         <image name="buttonPrint" width="274" height="56"/>
         <image name="buttonShare" width="274" height="56"/>
         <image name="lookHere" width="84" height="84"/>
-        <image name="micko2" width="1024" height="768"/>
         <image name="placeholder" width="178" height="237"/>
         <image name="tapHere2" width="380" height="44"/>
-        <image name="thankYou" width="1029" height="772"/>
     </resources>
 </document>
