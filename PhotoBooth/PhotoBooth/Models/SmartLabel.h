@@ -15,5 +15,7 @@
 
 - (void)updateLabelStyle;
 - (void)updateStrokeWidth:(float)value;
+- (void)updateTextFillColor:(UIColor *)color;
+- (void)updateTextStrokeColor:(UIColor *)color;
 
 @end

@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSAttributedString *attributedString;
 @property (strong, nonatomic) NSNumber *strokeWidth;
+@property (strong, nonatomic) UIColor *strokeColor;
 
 @end
 
@@ -33,7 +34,7 @@
         self.textColor = color;
         self.font = font;
         self.text = string;
-        [self updateStrokeWidth:3.f];
+        [self updateStrokeWidth:0];
         [self setupTextField];
         [self layoutIfNeeded];
     }
@@ -119,9 +120,17 @@
         _attributedString = [NSAttributedString new];
     }
 
+    if (!self.strokeWidth) {
+        self.strokeWidth = @0;
+    }
+
+    if (!self.strokeColor) {
+        self.strokeColor = [UIColor blackColor];
+    }
+
     NSDictionary *attributes = @{
-                                 NSStrokeWidthAttributeName: self.strokeWidth,
-                                 NSStrokeColorAttributeName:[UIColor yellowColor],
+                                 NSStrokeWidthAttributeName:self.strokeWidth,
+                                 NSStrokeColorAttributeName:self.strokeColor,
                                  NSForegroundColorAttributeName:self.textColor
                                  };
 
@@ -143,6 +152,14 @@
 
 - (void)updateStrokeWidth:(float)value {
     self.strokeWidth = [NSNumber numberWithFloat:-value];
+}
+
+- (void)updateTextFillColor:(UIColor *)color {
+    self.textColor = color;
+}
+
+- (void)updateTextStrokeColor:(UIColor *)color {
+    self.strokeColor = color;
 }
 
 @end
