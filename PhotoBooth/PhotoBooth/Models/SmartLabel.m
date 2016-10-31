@@ -50,7 +50,7 @@
 
     if (touch.tapCount > 1) {
         self.textField.hidden = NO;
-        self.backgroundColor = [UIColor grayColor];
+//        self.backgroundColor = [UIColor grayColor];
 //        [self.textField becomeFirstResponder];
     }
 }

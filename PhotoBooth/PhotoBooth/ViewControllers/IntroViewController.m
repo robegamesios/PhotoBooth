@@ -13,6 +13,7 @@
 #import "SmartLabel.h"
 #import "SmartSlider.h"
 #import "DRColorPicker.h"
+#import "MMPickerView.h"
 
 @interface IntroViewController () <UINavigationControllerDelegate, DLPhotoPickerViewControllerDelegate, UITextFieldDelegate,  UIImagePickerControllerDelegate>
 
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) DRColorPickerColor *textFillColor;
 @property (nonatomic, strong) DRColorPickerColor *textStrokeColor;
 @property (nonatomic, weak) DRColorPickerViewController* colorPickerVC;
+@property (copy, nonatomic) NSString *selectedString;
 
 @end
 
@@ -52,6 +54,7 @@
     [self setupTextRotationSlider];
     [self setupTextFillColorButton];
     [self setupTextStrokeColorButton];
+    [self setupTextFontSelectButton];
 }
 
 
@@ -110,6 +113,15 @@
     [button addTarget:self action:@selector(textStrokeColorButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
+
+- (void)setupTextFontSelectButton {
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-170, self.view.frame.size.height/2, 40, 40)];
+    button.backgroundColor = [UIColor blueColor];
+    [button setTitle:@"TFS" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(textFontSelectButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+}
+
 
 // Lock orientation
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -283,6 +295,24 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)showFontSelectorWithCompletionHandler:(SuccessBlock)completionHandler {
+
+    NSArray *sortByStrings = [UIFont familyNames];
+
+    if (!self.selectedString) {
+        self.selectedString = sortByStrings.firstObject;
+    }
+
+    [MMPickerView showPickerViewInView:self.view withStrings:sortByStrings withOptions:@{MMselectedObject:_selectedString} completion:^(NSString *selectedString) {
+
+        self.selectedString = selectedString;
+
+        if (completionHandler) {
+            completionHandler(selectedString);
+        }
+    }];
+}
+
 
 #pragma mark - Actions
 
@@ -332,6 +362,15 @@
         [weakSelf.titleLabel updateTextStrokeColor:color];
         [weakSelf.titleLabel updateLabelStyle];
 
+    }];
+}
+
+- (void)textFontSelectButtonTapped:(UIButton *)sender {
+    __weak typeof(self) weakSelf = self;
+
+    [self showFontSelectorWithCompletionHandler:^(NSString *responseObject) {
+        weakSelf.titleLabel.font = [UIFont fontWithName:responseObject size:self.titleLabel.font.pointSize];
+        [weakSelf.titleLabel updateLabelStyle];
     }];
 }
 
