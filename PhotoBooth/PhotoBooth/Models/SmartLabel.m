@@ -49,9 +49,10 @@
     UITouch *touch = [[event allTouches] anyObject];
 
     if (touch.tapCount > 1) {
-        self.textField.hidden = NO;
 //        self.backgroundColor = [UIColor grayColor];
 //        [self.textField becomeFirstResponder];
+
+        self.tag = 1000;
     }
 }
 

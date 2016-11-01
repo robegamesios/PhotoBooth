@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2FE390511D5E24E39B43FFC4 /* libPods-PhotoBooth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */; };
+		561AA1D51DC70B4B00FA2077 /* PropertyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 561AA1D41DC70B4B00FA2077 /* PropertyView.xib */; };
+		561AA1D81DC71B2C00FA2077 /* TextPropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AA1D71DC71B2C00FA2077 /* TextPropertyView.m */; };
 		56476E011DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */; };
 		56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */; };
 		565781711DBFC3F0006BD749 /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 565781691DBFC3F0006BD749 /* GlobalUtility.m */; };
@@ -29,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		17A5FF821C9E087BD5CC9E6F /* Pods-PhotoBooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBooth.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBooth/Pods-PhotoBooth.release.xcconfig"; sourceTree = "<group>"; };
+		561AA1D41DC70B4B00FA2077 /* PropertyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyView.xib; sourceTree = "<group>"; };
+		561AA1D61DC71B2C00FA2077 /* TextPropertyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextPropertyView.h; path = ../TextPropertyView.h; sourceTree = "<group>"; };
+		561AA1D71DC71B2C00FA2077 /* TextPropertyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextPropertyView.m; path = ../TextPropertyView.m; sourceTree = "<group>"; };
 		56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Bold 2.1.ttf"; sourceTree = "<group>"; };
 		56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Light 1.1.ttf"; sourceTree = "<group>"; };
 		565781681DBFC3F0006BD749 /* GlobalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalUtility.h; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				565F128E1DACB76F00B96C52 /* Main.storyboard */,
+				561AA1D41DC70B4B00FA2077 /* PropertyView.xib */,
 				565F12931DACB76F00B96C52 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -136,6 +142,8 @@
 				56A29A641DC0A0DC003FDCCA /* SmartLabel.m */,
 				56A29A661DC1ED33003FDCCA /* SmartSlider.h */,
 				56A29A671DC1ED33003FDCCA /* SmartSlider.m */,
+				561AA1D61DC71B2C00FA2077 /* TextPropertyView.h */,
+				561AA1D71DC71B2C00FA2077 /* TextPropertyView.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 				565F12951DACB76F00B96C52 /* LaunchScreen.storyboard in Resources */,
 				56476E011DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf in Resources */,
 				565F12921DACB76F00B96C52 /* Assets.xcassets in Resources */,
+				561AA1D51DC70B4B00FA2077 /* PropertyView.xib in Resources */,
 				565F12901DACB76F00B96C52 /* Main.storyboard in Resources */,
 				56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */,
 			);
@@ -329,6 +338,7 @@
 				565781711DBFC3F0006BD749 /* GlobalUtility.m in Sources */,
 				565F12871DACB76F00B96C52 /* main.m in Sources */,
 				565781721DBFC3F0006BD749 /* IntroViewController.m in Sources */,
+				561AA1D81DC71B2C00FA2077 /* TextPropertyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

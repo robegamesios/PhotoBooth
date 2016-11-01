@@ -14,6 +14,7 @@
 #import "SmartSlider.h"
 #import "DRColorPicker.h"
 #import "MMPickerView.h"
+#import "TextPropertyView.h"
 
 @interface IntroViewController () <UINavigationControllerDelegate, DLPhotoPickerViewControllerDelegate, UITextFieldDelegate,  UIImagePickerControllerDelegate>
 
@@ -55,10 +56,26 @@
     [self setupTextFillColorButton];
     [self setupTextStrokeColorButton];
     [self setupTextFontSelectButton];
+
+    [self setupTextPropertyView];
 }
 
 
 #pragma mark - setup
+
+- (void)setupTextPropertyView {
+
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PropertyView" owner:self options:nil];
+
+    float frameWidth = 350;
+    float frameHeight = 320;
+    TextPropertyView *tpv = [[TextPropertyView alloc]initWithFrame:CGRectMake(0, 0, frameWidth, frameHeight) view:self.view];
+
+    tpv = (TextPropertyView *)nib.firstObject;
+
+    tpv.center = CGPointMake(self.view.frame.size.width - frameWidth/2, self.view.frame.size.height/2);
+    [self.view addSubview:tpv];
+}
 
 - (void)setupSmartLabel {
     self.titleLabel = [[SmartLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 100) view:self.view color:[UIColor greenColor] font:[UIFont systemFontOfSize:90] string:@"TEST"];
