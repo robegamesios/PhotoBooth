@@ -10,6 +10,8 @@
 
 @interface TextPropertyView : UIView
 
-- (id)initWithFrame:(CGRect)frame view:(UIView *)view;
+@property (strong, nonatomic) UIViewController *parentViewController;
+
+- (id)initWithFrame:(CGRect)frame;
 
 @end

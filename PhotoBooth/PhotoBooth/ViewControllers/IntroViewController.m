@@ -30,6 +30,8 @@
 @property (nonatomic, weak) DRColorPickerViewController* colorPickerVC;
 @property (copy, nonatomic) NSString *selectedString;
 
+@property (strong, nonatomic) TextPropertyView *tpv;
+
 @end
 
 @implementation IntroViewController
@@ -69,16 +71,21 @@
 
     float frameWidth = 350;
     float frameHeight = 320;
-    TextPropertyView *tpv = [[TextPropertyView alloc]initWithFrame:CGRectMake(0, 0, frameWidth, frameHeight) view:self.view];
+    self.tpv = [[TextPropertyView alloc]initWithFrame:CGRectMake(0, 0, frameWidth, frameHeight)];
 
-    tpv = (TextPropertyView *)nib.firstObject;
+    self.tpv = (TextPropertyView *)nib.firstObject;
 
-    tpv.center = CGPointMake(self.view.frame.size.width - frameWidth/2, self.view.frame.size.height/2);
-    [self.view addSubview:tpv];
+    self.tpv.center = CGPointMake(self.view.frame.size.width - frameWidth/2, self.view.frame.size.height/2);
+
+    self.tpv.parentViewController = self;
+    
+    [self.view addSubview:self.tpv];
 }
 
 - (void)setupSmartLabel {
     self.titleLabel = [[SmartLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 100) view:self.view color:[UIColor greenColor] font:[UIFont systemFontOfSize:90] string:@"TEST"];
+
+    
     [self.view addSubview:self.titleLabel];
 }
 
