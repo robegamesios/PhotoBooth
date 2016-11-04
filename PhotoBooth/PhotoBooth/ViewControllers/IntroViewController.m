@@ -11,7 +11,6 @@
 #import "DLPhotoPicker.h"
 #import "GlobalUtility.h"
 #import "SmartLabel.h"
-#import "SmartSlider.h"
 #import "DRColorPicker.h"
 #import "MMPickerView.h"
 #import "TextPropertyView.h"
@@ -22,9 +21,6 @@
 @property (weak, nonatomic) IBOutlet YCSlideShowImageView *imageView;
 @property (strong, nonatomic) SmartLabel *titleLabel;
 
-@property (strong, nonatomic) SmartSlider *textSizeSlider;
-@property (strong, nonatomic) SmartSlider *textStrokeSlider;
-@property (strong, nonatomic) SmartSlider *textRotationSlider;
 @property (nonatomic, strong) DRColorPickerColor *textFillColor;
 @property (nonatomic, strong) DRColorPickerColor *textStrokeColor;
 @property (nonatomic, weak) DRColorPickerViewController* colorPickerVC;
@@ -51,15 +47,8 @@
 
     self.imageView.animationDelay = 10.0f;
 
-    [self setupSmartLabel];
-    [self setupTextSizeSlider];
-    [self setupTextStrokeSlider];
-    [self setupTextRotationSlider];
-    [self setupTextFillColorButton];
-    [self setupTextStrokeColorButton];
-    [self setupTextFontSelectButton];
-
     [self setupTextPropertyView];
+    [self setupSmartLabel];
 }
 
 
@@ -78,72 +67,16 @@
     self.tpv.center = CGPointMake(self.view.frame.size.width - frameWidth/2, self.view.frame.size.height/2);
 
     self.tpv.parentViewController = self;
-    
+    self.tpv.hidden = YES;
     [self.view addSubview:self.tpv];
 }
 
 - (void)setupSmartLabel {
-    self.titleLabel = [[SmartLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 100) view:self.view color:[UIColor greenColor] font:[UIFont systemFontOfSize:90] string:@"TEST"];
+    self.titleLabel = [[SmartLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 100) color:[UIColor greenColor] font:[UIFont systemFontOfSize:90] string:@"TEST"];
 
-    
+    self.titleLabel.parentViewController = self;
+    self.titleLabel.tpv = self.tpv;
     [self.view addSubview:self.titleLabel];
-}
-
-- (void)setupTextSizeSlider {
-    self.textSizeSlider = [[SmartSlider alloc]initWithFrame:CGRectMake(self.view.frame.size.width-200, self.view.frame.size.height/2, 300, 10) minValue:20 maxValue:200 defaultValue:90];
-
-    CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
-    self.textSizeSlider.transform = trans;
-
-    [self.textSizeSlider addTarget:self action:@selector(textSizeSliderAction:) forControlEvents:UIControlEventValueChanged];
-    
-    [self.view addSubview:self.textSizeSlider];
-}
-
-- (void)setupTextStrokeSlider {
-    self.textStrokeSlider = [[SmartSlider alloc]initWithFrame:CGRectMake(self.view.frame.size.width-260, self.view.frame.size.height/2, 300, 10) minValue:0 maxValue:10 defaultValue:0];
-
-    CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
-    self.textStrokeSlider.transform = trans;
-
-    [self.textStrokeSlider addTarget:self action:@selector(textStrokeSliderAction:) forControlEvents:UIControlEventValueChanged];
-
-    [self.view addSubview:self.textStrokeSlider];
-}
-
-- (void)setupTextRotationSlider {
-    self.textRotationSlider = [[SmartSlider alloc]initWithFrame:CGRectMake(self.view.frame.size.width-320, self.view.frame.size.height/2, 300, 10) minValue:0 maxValue:360 defaultValue:0];
-
-    CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
-    self.textRotationSlider.transform = trans;
-
-    [self.textRotationSlider addTarget:self action:@selector(textRotationSliderAction:) forControlEvents:UIControlEventValueChanged];
-
-    [self.view addSubview:self.textRotationSlider];
-}
-
-- (void)setupTextFillColorButton {
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-270, self.view.frame.size.height/2, 40, 40)];
-    button.backgroundColor = [UIColor blueColor];
-    [button setTitle:@"TFC" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(textFillColorButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-}
-
-- (void)setupTextStrokeColorButton {
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-220, self.view.frame.size.height/2, 40, 40)];
-    button.backgroundColor = [UIColor blueColor];
-    [button setTitle:@"TSC" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(textStrokeColorButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-}
-
-- (void)setupTextFontSelectButton {
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-170, self.view.frame.size.height/2, 40, 40)];
-    button.backgroundColor = [UIColor blueColor];
-    [button setTitle:@"TFS" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(textFontSelectButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
 }
 
 
@@ -317,85 +250,6 @@
 
 - (void)pickerControllerDidCancel:(DLPhotoPickerViewController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)showFontSelectorWithCompletionHandler:(SuccessBlock)completionHandler {
-
-    NSArray *sortByStrings = [UIFont familyNames];
-
-    if (!self.selectedString) {
-        self.selectedString = sortByStrings.firstObject;
-    }
-
-    [MMPickerView showPickerViewInView:self.view withStrings:sortByStrings withOptions:@{MMselectedObject:_selectedString} completion:^(NSString *selectedString) {
-
-        self.selectedString = selectedString;
-
-        if (completionHandler) {
-            completionHandler(selectedString);
-        }
-    }];
-}
-
-
-#pragma mark - Actions
-
-- (void)textSizeSliderAction:(SmartSlider *)sender {
-    float value = sender.value;
-
-    self.titleLabel.font = [UIFont fontWithName:self.titleLabel.font.fontName size:value];
-    [self.titleLabel sizeToFit];
-    sender.label.text = [NSString stringWithFormat:@"%0.1f",value];
-
-}
-
-- (void)textStrokeSliderAction:(SmartSlider *)sender {
-    float value = sender.value;
-
-    [self.titleLabel updateStrokeWidth:value];
-    [self.titleLabel updateLabelStyle];
-    sender.label.text = [NSString stringWithFormat:@"%0.1f",value];
-}
-
-- (void)textRotationSliderAction:(SmartSlider *)sender {
-    float value = sender.value;
-
-    CGAffineTransform trans = CGAffineTransformMakeRotation(value * -M_PI/180);
-    self.titleLabel.transform = trans;
-
-    [self.titleLabel updateLabelStyle];
-    sender.label.text = [NSString stringWithFormat:@"%0.1f",value];
-}
-
-- (void)textFillColorButtonTapped:(UIButton *)sender {
-
-    __weak typeof(self)weakSelf = self;
-
-    [self showColorPickerWithCompletionHanlder:^(UIColor* color) {
-        [weakSelf.titleLabel updateTextFillColor:color];
-        [weakSelf.titleLabel updateLabelStyle];
-
-    }];
-}
-
-- (void)textStrokeColorButtonTapped:(UIButton *)sender {
-
-    __weak typeof(self)weakSelf = self;
-
-    [self showColorPickerWithCompletionHanlder:^(UIColor* color) {
-        [weakSelf.titleLabel updateTextStrokeColor:color];
-        [weakSelf.titleLabel updateLabelStyle];
-
-    }];
-}
-
-- (void)textFontSelectButtonTapped:(UIButton *)sender {
-    __weak typeof(self) weakSelf = self;
-
-    [self showFontSelectorWithCompletionHandler:^(NSString *responseObject) {
-        weakSelf.titleLabel.font = [UIFont fontWithName:responseObject size:self.titleLabel.font.pointSize];
-        [weakSelf.titleLabel updateLabelStyle];
-    }];
 }
 
 

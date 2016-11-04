@@ -11,6 +11,7 @@
 @interface TextPropertyView : UIView
 
 @property (strong, nonatomic) UIViewController *parentViewController;
+@property (strong, nonatomic) NSString *fontNameString;
 
 - (id)initWithFrame:(CGRect)frame;
 

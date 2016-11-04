@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextPropertyView.h"
 
 @interface SmartLabel : UILabel <UITextFieldDelegate>
 
-- (id)initWithFrame:(CGRect)frame view:(UIView *)view color:(UIColor *)color font:(UIFont *)font string:(NSString *)string;
+- (id)initWithFrame:(CGRect)frame color:(UIColor *)color font:(UIFont *)font string:(NSString *)string;
 
+@property (strong, nonatomic) UIViewController *parentViewController;
+@property (strong, nonatomic) TextPropertyView *tpv;
 
 - (void)updateLabelStyle;
 - (void)updateStrokeWidth:(float)value;

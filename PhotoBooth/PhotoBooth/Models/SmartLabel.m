@@ -24,7 +24,7 @@
 
 @implementation SmartLabel
 
-- (id)initWithFrame:(CGRect)frame view:(UIView *)view color:(UIColor *)color font:(UIFont *)font string:(NSString *)string {
+- (id)initWithFrame:(CGRect)frame color:(UIColor *)color font:(UIFont *)font string:(NSString *)string {
     self = [super initWithFrame:frame];
 
     if (self) {
@@ -53,13 +53,14 @@
 //        [self.textField becomeFirstResponder];
 
         self.tag = 1000;
+        self.tpv.hidden = NO;
     }
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:self.view];
+    CGPoint touchLocation = [touch locationInView:self.parentViewController.view];
     self.center = touchLocation;
 }
 
