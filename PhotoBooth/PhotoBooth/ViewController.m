@@ -11,8 +11,8 @@
 #import "SendPhotoViewController.h"
 #import "GlobalUtility.h"
 
-static int const StartTimerLimit = 5;
-static int const SucceedingTimerLimit = 3;
+static int const StartTimerLimit = 3;
+static int const SucceedingTimerLimit = 2;
 
 @interface ViewController () <AWCameraViewDelegate>
 
@@ -254,7 +254,7 @@ static int const SucceedingTimerLimit = 3;
 
     static int counter = 0;
 
-    UIImage *rotatedImage = [GlobalUtility rotateAndMirrorImage:image rotation:UIImageOrientationLeft];
+    UIImage *rotatedImage = [GlobalUtility rotateImage:image rotation:UIImageOrientationLeft];
 
     switch (counter) {
         case 0:
