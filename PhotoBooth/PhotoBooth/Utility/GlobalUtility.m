@@ -248,8 +248,29 @@
 
     }
 
-
     return array.copy;
+}
+
++ (void)deleteAllBackgroundImages:(ScreenType)screenType completionHandler:(VoidBlock)completionHandler {
+
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+
+    if (screenType == ScreenTypeIntro) {
+        RLMResults *results = [IntroScreenImagesModel allObjects];
+        [realm deleteObjects:results];
+
+    } else if (screenType == ScreenTypeLayout) {
+
+    } else if (screenType == ScreenTypeSendPhoto) {
+        
+    }
+
+    [realm commitWriteTransaction];
+
+    if (completionHandler) {
+        completionHandler();
+    }
 }
 
 @end

@@ -41,13 +41,13 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="wHp-bb-Y1p"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDo-eQ-lN2">
-                                <rect key="frame" x="668" y="949" width="80" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDo-eQ-lN2">
+                                <rect key="frame" x="704" y="40" width="44" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Jz0-m0-LOB"/>
-                                    <constraint firstAttribute="width" constant="80" id="T6q-2W-aia"/>
+                                    <constraint firstAttribute="height" constant="44" id="a5T-It-5MQ"/>
+                                    <constraint firstAttribute="width" constant="44" id="eOA-2n-R5m"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="iconSettings"/>
                                 <connections>
                                     <action selector="settingsButtonTapped:" destination="R8l-Aw-Qzh" eventType="touchUpInside" id="Fj6-gq-ZhZ"/>
                                 </connections>
@@ -57,12 +57,12 @@
                         <constraints>
                             <constraint firstItem="AjR-C1-7Vb" firstAttribute="top" secondItem="Weq-xM-6Jt" secondAttribute="bottom" id="3Ib-kO-efa"/>
                             <constraint firstAttribute="trailing" secondItem="Weq-xM-6Jt" secondAttribute="trailing" id="45S-WM-MHB"/>
+                            <constraint firstAttribute="trailing" secondItem="RDo-eQ-lN2" secondAttribute="trailing" constant="20" id="5ro-pq-51o"/>
                             <constraint firstItem="DdK-rp-hNC" firstAttribute="centerX" secondItem="aPe-jE-UgF" secondAttribute="centerX" id="EBt-Z6-BaI"/>
                             <constraint firstItem="Weq-xM-6Jt" firstAttribute="top" secondItem="aPe-jE-UgF" secondAttribute="top" id="PPM-PC-gTJ"/>
-                            <constraint firstAttribute="trailing" secondItem="RDo-eQ-lN2" secondAttribute="trailing" constant="20" id="Ph2-cY-FY4"/>
-                            <constraint firstItem="AjR-C1-7Vb" firstAttribute="top" secondItem="RDo-eQ-lN2" secondAttribute="bottom" constant="20" id="Skc-UX-AQ9"/>
                             <constraint firstItem="DdK-rp-hNC" firstAttribute="top" secondItem="Weq-xM-6Jt" secondAttribute="bottom" constant="-100" id="bxM-dc-idk"/>
                             <constraint firstItem="Weq-xM-6Jt" firstAttribute="leading" secondItem="aPe-jE-UgF" secondAttribute="leading" id="gOY-FM-9JN"/>
+                            <constraint firstItem="RDo-eQ-lN2" firstAttribute="top" secondItem="IS4-Td-kL8" secondAttribute="bottom" constant="20" id="xr8-j5-Mdt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -359,6 +359,7 @@
         <image name="buttonEmail" width="274" height="56"/>
         <image name="buttonPrint" width="274" height="56"/>
         <image name="buttonShare" width="274" height="56"/>
+        <image name="iconSettings" width="80" height="80"/>
         <image name="lookHere" width="84" height="84"/>
         <image name="placeholder" width="178" height="237"/>
         <image name="tapHere2" width="380" height="44"/>

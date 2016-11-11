@@ -13,6 +13,7 @@
 
 - (id)initWithFrame:(CGRect)frame color:(UIColor *)color font:(UIFont *)font string:(NSString *)string;
 
+@property (strong, nonatomic) UITextField *textField;
 @property (strong, nonatomic) UIViewController *parentViewController;
 @property (strong, nonatomic) TextPropertyView *tpv;
 

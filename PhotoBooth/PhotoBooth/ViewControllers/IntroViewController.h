@@ -6,8 +6,9 @@
 //  Copyright © 2016 robert enriquez. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface IntroViewController : UIViewController
+@interface IntroViewController : BaseViewController
+
 
 @end

@@ -35,5 +35,6 @@
 + (void)saveImageToRealm:(UIImage *)image screenType:(ScreenType)screenType;
 
 + (NSArray *)retrieveAllImages:(ScreenType)screenType;
++ (void)deleteAllBackgroundImages:(ScreenType)screenType completionHandler:(VoidBlock)completionHandler;
 
 @end

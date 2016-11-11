@@ -11,7 +11,6 @@
 @interface SmartLabel ()
 
 @property (strong, nonatomic) UIView *view;
-@property (strong, nonatomic) UITextField *textField;
 @property (strong, nonatomic) UIButton *doneButton;
 @property (strong, nonatomic) UIButton *deleteButton;
 
@@ -52,7 +51,13 @@
 //        self.backgroundColor = [UIColor grayColor];
 //        [self.textField becomeFirstResponder];
 
-        self.tag = 1000;
+        [self resetAllTags:^{
+            self.tag = 1000;
+        }];
+
+        [self.tpv.fontStyleButton setTitle:self.font.fontName forState:UIControlStateNormal];
+        self.tpv.fontColorButton.backgroundColor = self.textColor;
+        self.tpv.fontStrokeColorButton.backgroundColor = [UIColor blackColor];
         self.tpv.hidden = NO;
     }
 }
@@ -162,6 +167,20 @@
 
 - (void)updateTextStrokeColor:(UIColor *)color {
     self.strokeColor = color;
+}
+
+- (void)resetAllTags:(VoidBlock)completionHandler {
+    NSArray *subviews = [self.parentViewController.view subviews];
+
+    for (UIView *subview in subviews) {
+        if ([subview isKindOfClass:[self class]]) {
+            subview.tag = 0;
+        }
+    }
+
+    if (completionHandler) {
+        completionHandler();
+    }
 }
 
 @end

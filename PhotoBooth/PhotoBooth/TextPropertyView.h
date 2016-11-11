@@ -6,13 +6,13 @@
 //  Copyright © 2016 robert enriquez. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseView.h"
 
-@interface TextPropertyView : UIView
+@interface TextPropertyView : BaseView
 
-@property (strong, nonatomic) UIViewController *parentViewController;
-@property (strong, nonatomic) NSString *fontNameString;
+@property (weak, nonatomic) IBOutlet UIButton *fontStyleButton;
+@property (weak, nonatomic) IBOutlet UIButton *fontColorButton;
+@property (weak, nonatomic) IBOutlet UIButton *fontStrokeColorButton;
 
-- (id)initWithFrame:(CGRect)frame;
 
 @end
