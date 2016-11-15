@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2FE390511D5E24E39B43FFC4 /* libPods-PhotoBooth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */; };
+		55188902255F8AEE1F722EFD /* Pods_PhotoBooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62E4936C94A8071B815940B /* Pods_PhotoBooth.framework */; };
 		562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 562455841DB49EC40071A4B3 /* GlobalUtility.m */; };
 		5624558B1DB4A6A00071A4B3 /* SendPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558A1DB4A6A00071A4B3 /* SendPhotoViewController.m */; };
 		5624558E1DB4C3560071A4B3 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5624558D1DB4C3560071A4B3 /* IntroViewController.m */; };
@@ -45,7 +45,7 @@
 		565F12961DACB76F00B96C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56F6DCC71DADE9CD002F7D23 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
-		A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoBooth.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62E4936C94A8071B815940B /* Pods_PhotoBooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoBooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0F5A6EF05C76F878D0F72A /* Pods-PhotoBooth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBooth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBooth/Pods-PhotoBooth.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +56,7 @@
 			files = (
 				56F6DCC91DADE9CE002F7D23 /* Photos.framework in Frameworks */,
 				56F6DCCA1DADE9CE002F7D23 /* PhotosUI.framework in Frameworks */,
-				2FE390511D5E24E39B43FFC4 /* libPods-PhotoBooth.a in Frameworks */,
+				55188902255F8AEE1F722EFD /* Pods_PhotoBooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +135,7 @@
 			children = (
 				56F6DCC71DADE9CD002F7D23 /* Photos.framework */,
 				56F6DCC81DADE9CD002F7D23 /* PhotosUI.framework */,
-				A19E3F76F8ACD103C17822B6 /* libPods-PhotoBooth.a */,
+				B62E4936C94A8071B815940B /* Pods_PhotoBooth.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7E322AE95689EB97225EB503 /* [CP] Copy Pods Resources */ = {
