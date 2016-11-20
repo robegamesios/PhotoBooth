@@ -33,6 +33,8 @@ static int const SucceedingTimerLimit = 2;
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (assign, nonatomic) int timerLimit;
+@property (assign, nonatomic) BOOL didCreateTimer;
+
 
 @end
 
@@ -144,11 +146,14 @@ static int const SucceedingTimerLimit = 2;
 #pragma mark - Timers
 
 - (void)startCameraTimer {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                     target:self
-                                   selector:@selector(updateTimer)
-                                   userInfo:nil
-                                    repeats:YES];
+    if (!self.didCreateTimer) {
+        self.didCreateTimer = YES;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                      target:self
+                                                    selector:@selector(updateTimer)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    }
 }
 
 - (void)updateTimer {
@@ -164,6 +169,7 @@ static int const SucceedingTimerLimit = 2;
         [self takePhoto];
         [self.timer invalidate];
         self.timer = nil;
+        self.didCreateTimer = NO;
         self.timerLimit = SucceedingTimerLimit;
     }
 }
