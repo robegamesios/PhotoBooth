@@ -34,10 +34,14 @@
 
     self.imageView.animationDelay = 10.0f;
 
-    [self setupTextPropertyView];
     [self setupEditModeView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    self.navigationController.navigationBarHidden = YES;
+}
 
 // Lock orientation
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -49,12 +53,58 @@
 }
 
 
+#pragma mark - Touches
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+
+    SmartLabel *label = [GlobalUtility findSmartLabelWithTag:KActiveTag parentViewController:self];
+
+    if (label) {
+        if (!label.isEditingTextProperty) {
+            if (!CGRectContainsPoint(label.frame, touchLocation)) {
+                label.tag = 0;
+                label.layer.borderWidth = 0;
+            }
+        }
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)settingsButtonTapped:(UIButton *)sender {
-    self.emv.hidden = NO;
+    self.navigationController.navigationBarHidden = NO;
 }
 
+- (IBAction)addImageButtonTapped:(UIBarButtonItem *)sender {
+    [self showPhotoPicker];
+}
+
+- (IBAction)clearImageButtonTapped:(UIBarButtonItem *)sender {
+    [self deleteBackgroundImages];
+}
+
+- (IBAction)backgroundColorButtonTapped:(UIBarButtonItem *)sender {
+    [self showColorPickerWithCompletionHanlder:^(UIColor *color) {
+        self.view.backgroundColor = color;
+    }];
+}
+
+- (IBAction)addTextButtonTapped:(UIBarButtonItem *)sender {
+    [self setupSmartLabel];
+}
+
+- (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {
+    self.navigationController.navigationBarHidden = YES;
+}
 
 #pragma mark - unwind segue
 - (IBAction)unwindToIntroScreen:(UIStoryboardSegue *)segue {

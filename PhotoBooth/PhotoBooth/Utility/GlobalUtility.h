@@ -10,6 +10,8 @@
 #import "AFNetworkReachabilityManager.h"
 @import UIKit;
 
+@class SmartLabel;
+
 @interface GlobalUtility : NSObject
 
 + (void)showAlertFromNavigationController:(UINavigationController *)navigationController title:(NSString *)title message:(NSString *)message completionHandler:(VoidBlock)completionHandler;
@@ -31,6 +33,8 @@
 + (void)saveToCameraRoll:(UIImage *)screenShot;
 
 + (BOOL)isConnected;
+
++ (SmartLabel *)findSmartLabelWithTag:(int)tag parentViewController:(UIViewController *)parentViewController;
 
 + (void)saveImageToRealm:(UIImage *)image screenType:(ScreenType)screenType;
 

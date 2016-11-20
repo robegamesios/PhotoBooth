@@ -9,6 +9,7 @@
 #import "GlobalUtility.h"
 #import <Realm/RLMRealm.h>
 #import "IntroScreenImagesModel.h"
+#import "SmartLabel.h"
 
 @implementation GlobalUtility
 
@@ -206,6 +207,25 @@
     return [AFNetworkReachabilityManager sharedManager].reachable;
 }
 
+
+#pragma mark - SmartLabels
+
++ (SmartLabel *)findSmartLabelWithTag:(int)tag parentViewController:(UIViewController *)parentViewController {
+    NSArray *subviews = [parentViewController.view subviews];
+
+    for (UIView *subview in subviews) {
+        if ([subview isKindOfClass:[SmartLabel class]]) {
+
+            SmartLabel *view = (SmartLabel *)subview;
+
+            if (view.tag == KActiveTag) {
+                return view;
+            }
+        }
+    }
+    
+    return nil;
+}
 
 #pragma mark - Realm
 

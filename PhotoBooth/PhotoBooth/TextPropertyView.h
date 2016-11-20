@@ -7,12 +7,15 @@
 //
 
 #import "BaseView.h"
+@class SmartSlider;
 
 @interface TextPropertyView : BaseView
 
+@property (strong, nonatomic) SmartLabel *smartLabel;
 @property (weak, nonatomic) IBOutlet UIButton *fontStyleButton;
 @property (weak, nonatomic) IBOutlet UIButton *fontColorButton;
 @property (weak, nonatomic) IBOutlet UIButton *fontStrokeColorButton;
-
+@property (weak, nonatomic) IBOutlet SmartSlider *fontStrokeWidthSlider;
+@property (weak, nonatomic) IBOutlet UILabel *fontStrokeWidthLabel;
 
 @end

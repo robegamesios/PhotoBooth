@@ -22,3 +22,9 @@ typedef void(^SuccessBlock)(id responseObject);
 typedef void(^TwoResultBlock)(id obj1, id obj2);
 typedef void(^TwoIntResultBlock)(int obj1, int obj2);
 typedef void(^ErrorBlock)(NSString *errorString);
+
+
+#pragma mark - Constants
+
+static NSInteger const KActiveTag = 1000;
+static NSInteger const KBorderWidth = 1;

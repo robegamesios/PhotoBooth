@@ -9,18 +9,10 @@
 #import "TextPropertyView.h"
 #import "SmartLabel.h"
 
-@interface TextPropertyView ()
+@interface TextPropertyView () <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UISlider *fontStrokeWidthSlider;
-@property (weak, nonatomic) IBOutlet UILabel *fontStrokeWidthLabel;
-@property (weak, nonatomic) IBOutlet UISlider *fontSizeSlider;
-@property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
-@property (weak, nonatomic) IBOutlet UISlider *textRotationSlider;
-@property (weak, nonatomic) IBOutlet UILabel *textRotationLabel;
-@property (weak, nonatomic) IBOutlet UIButton *addLabelButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteLabelButton;
-
-@property (strong, nonatomic) SmartLabel *smartLabel;
+@property (assign, nonatomic) BOOL didAddGestureRecognizers;
 
 @end
 
@@ -37,29 +29,6 @@
 }
 
 
-#pragma mark - Touches
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    UITouch *touch = [[event allTouches] anyObject];
-//
-//    if (touch.tapCount > 1) {
-//    }
-
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:self.parentViewController.view];
-
-    self.center = touchLocation;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-}
-
-
 #pragma mark - Actions
 
 - (IBAction)fontStyleButtonTapped:(UIButton *)sender {
@@ -68,8 +37,7 @@
     [self showFontSelectorWithCompletionHandler:^(NSString *responseObject) {
         weakSelf.smartLabel.font = [UIFont fontWithName:responseObject size:self.smartLabel.font.pointSize];
         [weakSelf.fontStyleButton setTitle:responseObject forState:UIControlStateNormal];
-        [weakSelf.smartLabel updateLabelStyle];
-
+        [weakSelf.smartLabel updateLabel];
     }];
 }
 
@@ -78,7 +46,6 @@
 
     [self showColorPickerWithCompletionHanlder:^(UIColor* color) {
         [weakSelf.smartLabel updateTextFillColor:color];
-        [weakSelf.smartLabel updateLabelStyle];
         weakSelf.fontColorButton.backgroundColor = color;
     }];
 }
@@ -88,7 +55,6 @@
 
     [self showColorPickerWithCompletionHanlder:^(UIColor* color) {
         [weakSelf.smartLabel updateTextStrokeColor:color];
-        [weakSelf.smartLabel updateLabelStyle];
         weakSelf.fontStrokeColorButton.backgroundColor = color;
     }];
 }
@@ -103,46 +69,24 @@
     self.fontStrokeWidthLabel.text = [NSString stringWithFormat:@"%0.1f",value];
 
     [self.smartLabel updateStrokeWidth:value];
-    [self.smartLabel updateLabelStyle];
 }
 
-- (IBAction)fontSizeSliderAction:(UISlider *)sender {
-    sender.minimumValue = 20;
-    sender.maximumValue = 300;
-    sender.continuous = YES;
+- (IBAction)deleteButtonTapped:(UIButton *)sender {
+    [self.smartLabel removeFromSuperview];
+    //RE: TODO: delete from realm
 
-    float value = sender.value;
-
-    self.fontSizeLabel.text = [NSString stringWithFormat:@"%0.1f",value];
-
-    self.smartLabel.font = [UIFont fontWithName:self.smartLabel.font.fontName size:value];
-    [self.smartLabel sizeToFit];
 }
 
-- (IBAction)textRotationSliderAction:(UISlider *)sender {
-    sender.minimumValue = 0;
-    sender.maximumValue = 360;
-    sender.continuous = YES;
-
-    float value = sender.value;
-
-    self.textRotationLabel.text = [NSString stringWithFormat:@"%0.1f",value];
-
-    CGAffineTransform trans = CGAffineTransformMakeRotation(value * -M_PI/180);
-
-    self.smartLabel.transform = trans;
-    [self.smartLabel updateLabelStyle];
-}
-
-- (IBAction)editTextButtonTapped:(UIButton *)sender {
+- (IBAction)editButtonTapped:(UIButton *)sender {
+    self.smartLabel.textField.backgroundColor = [self.smartLabel textFieldEditBackgroundColor];
+    self.smartLabel.layer.borderWidth = 0;
     [self.smartLabel.textField becomeFirstResponder];
 }
 
 - (IBAction)doneButtonTapped:(UIButton *)sender {
-    self.smartLabel.tag = 0;
+    self.smartLabel.isEditingTextProperty = NO;
     self.hidden = YES;
 }
-
 
 #pragma mark - Helpers
 
@@ -153,7 +97,8 @@
 
         if ([subview isKindOfClass:[SmartLabel class]]) {
             if (subview.tag == 1000) {
-                return (SmartLabel *)subview;
+                SmartLabel *view = (SmartLabel *)subview;
+                return view;
             }
         }
     }

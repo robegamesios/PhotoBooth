@@ -8,18 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "TextPropertyView.h"
+#import "BaseViewController.h"
 
 @interface SmartLabel : UILabel <UITextFieldDelegate>
 
-- (id)initWithFrame:(CGRect)frame color:(UIColor *)color font:(UIFont *)font string:(NSString *)string;
+- (id)initWithColor:(UIColor *)color font:(UIFont *)font fontStrokeColor:(UIColor *)sColor fontStrokeWidth:(float)sWidth string:(NSString *)string;
 
+@property (strong, nonatomic) BaseViewController *parentViewController;
 @property (strong, nonatomic) UITextField *textField;
-@property (strong, nonatomic) UIViewController *parentViewController;
-@property (strong, nonatomic) TextPropertyView *tpv;
+@property (strong, nonatomic) NSNumber *strokeWidth;
+@property (strong, nonatomic) UIColor *strokeColor;
+@property (assign, nonatomic) BOOL isEditingTextProperty;
 
-- (void)updateLabelStyle;
 - (void)updateStrokeWidth:(float)value;
 - (void)updateTextFillColor:(UIColor *)color;
 - (void)updateTextStrokeColor:(UIColor *)color;
+- (void)addGestureRecognizers;
+- (void)updateLabel;
+- (UIColor *)textFieldEditBackgroundColor;
 
 @end

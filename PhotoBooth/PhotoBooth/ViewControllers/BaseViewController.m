@@ -10,26 +10,22 @@
 #import "DLPhotoPicker.h"
 #import "YCSlideShowImageView.h"
 #import "DRColorPicker.h"
+#import "SmartLabel.h"
+#import "TextPropertyView.h"
+#import "SmartSlider.h"
 
 @interface BaseViewController () <UINavigationControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, DLPhotoPickerViewControllerDelegate>
-
 
 @property (nonatomic, strong) DRColorPickerColor *textFillColor;
 @property (nonatomic, strong) DRColorPickerColor *textStrokeColor;
 @property (nonatomic, weak) DRColorPickerViewController* colorPickerVC;
-
 @end
+
 
 @implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -50,28 +46,39 @@
 }
 
 - (void)setupTextPropertyView {
-
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PropertyView" owner:self options:nil];
 
     self.tpv = [TextPropertyView new];
-
     self.tpv = (TextPropertyView *)nib.firstObject;
-
-    float frameWidth = 350;
-
-    self.tpv.center = CGPointMake(self.view.frame.size.width - frameWidth/2, self.view.frame.size.height/2);
-
+    float frameWidth = 320;
+    float frameHeight = 200;
+    self.tpv.frame = CGRectMake(self.view.frame.size.width - frameWidth, self.view.frame.size.height - frameHeight, frameWidth, frameHeight);
     self.tpv.parentViewController = self;
     self.tpv.hidden = YES;
     [self.view addSubview:self.tpv];
 }
 
 - (void)setupSmartLabel {
-    SmartLabel *titleLabel = [[SmartLabel alloc]initWithFrame:CGRectMake(0, 0, 300, 100) color:[UIColor purpleColor] font:[UIFont systemFontOfSize:90] string:@"TEST"];
+    SmartLabel *titleLabel = nil;
+
+    if (self.tpv) {
+        UIColor *fontColor = self.tpv.fontColorButton.backgroundColor;
+        UIFont *font = [UIFont fontWithName:self.tpv.fontStyleButton.titleLabel.text size:60];
+        UIColor *fontStrokeColor = self.tpv.fontStrokeColorButton.backgroundColor;
+        float fontStrokeWidth = self.tpv.fontStrokeWidthSlider.value * -1;
+
+        titleLabel = [[SmartLabel alloc]initWithColor:fontColor font:font fontStrokeColor:fontStrokeColor fontStrokeWidth:fontStrokeWidth string:@"Double tap me to edit"];
+
+    } else {
+        titleLabel = [[SmartLabel alloc]initWithColor:[UIColor blueColor] font:[UIFont systemFontOfSize:60] fontStrokeColor:[UIColor whiteColor] fontStrokeWidth:0 string:@"Double tap me to edit"];
+        [self setupTextPropertyView];
+    }
 
     titleLabel.parentViewController = self;
-    titleLabel.tpv = self.tpv;
     [self.view addSubview:titleLabel];
+    [titleLabel sizeToFit];
+    titleLabel.center = CGPointMake(self.view.frame.size.width/2, 150);
+    [titleLabel addGestureRecognizers];
 }
 
 

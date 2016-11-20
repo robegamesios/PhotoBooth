@@ -10,7 +10,4 @@
 
 @interface SmartSlider : UISlider
 
-@property (strong, nonatomic) UILabel *label;
-
-- (id)initWithFrame:(CGRect)frame minValue:(float)min maxValue:(float)max defaultValue:(float)value;
 @end
