@@ -50,7 +50,7 @@
 
     emailDialog.mailComposeDelegate = self;
 
-    NSString *htmlMsg = @"<html><body><p>Baby Micko had an amazing time at his first birthday!<br>Thank you for making his day wonderful with your warm presence, thoughtful gift, and kind words.<br><br>Sincerely,<br>Rob & Joy</p></body></html>";
+    NSString *htmlMsg = @"<html><body><p>Happy Thanksgiving! </p></body></html>";
 
     UIImage *rotatedImage = [GlobalUtility rotateImage:emailImage rotation:UIImageOrientationUp];
     NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(rotatedImage, 1.0)];
@@ -62,7 +62,7 @@
         [emailDialog addAttachmentData:jpegData mimeType:@"image/jpeg" fileName:fileName];
     }
 
-    [emailDialog setSubject:@"Micko's 1st Birthday Party Photobooth pic"];
+    [emailDialog setSubject:@"Thanksgiving Party Photobooth pic"];
     [emailDialog setMessageBody:htmlMsg isHTML:YES];
 
     [self presentViewController:emailDialog animated:YES completion:nil];
@@ -93,7 +93,7 @@
 
             case MFMailComposeResultSent:
                 NSLog(@"email sent");
-                message = @"Photo sent, thanks for attending the party! :)";
+                message = @"Photo sent, thanks :)";
 
                 break;
             case MFMailComposeResultFailed:

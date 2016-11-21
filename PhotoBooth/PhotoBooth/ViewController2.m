@@ -23,6 +23,7 @@ static int const SucceedingTimerLimit = 2;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel3;
 
 @property (strong, nonatomic) UIImage *finalImage;
@@ -82,6 +83,7 @@ static int const SucceedingTimerLimit = 2;
 - (void)setupLabels {
     //Rotate countdownLabel 90 degress
     self.countdownLabel.transform = CGAffineTransformMakeRotation(3.14f/2);
+    self.placeholderLabel2.transform = CGAffineTransformMakeRotation(3.14f/2);
     self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
     self.imageViewPreview3.transform = CGAffineTransformMakeRotation(3.14f/6);
     self.imageViewPreview4.transform = CGAffineTransformMakeRotation(-3.14f/6);
@@ -110,6 +112,7 @@ static int const SucceedingTimerLimit = 2;
     self.cameraView.hidden = status;
     self.imageViewPreview3.hidden = status;
     self.imageViewPreview4.hidden = status;
+    self.placeholderLabel2.hidden = status;
     self.placeholderLabel3.hidden = status;
 
 }
@@ -255,6 +258,7 @@ static int const SucceedingTimerLimit = 2;
             break;
 
         case 1:
+            self.placeholderLabel2.hidden = YES;
             self.cameraView.hidden = YES;
             self.imageViewPreview4.image = rotatedImage;
             counter = 0;
