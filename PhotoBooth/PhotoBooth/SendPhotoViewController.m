@@ -50,7 +50,7 @@
 
     emailDialog.mailComposeDelegate = self;
 
-    NSString *htmlMsg = @"<html><body><p>Happy Thanksgiving! </p></body></html>";
+    NSString *htmlMsg = @"<html><body><p>Happy Thanksgiving! itms://itunes.apple.com/us/app/apple-store/id1178580289?mt=8 </p></body></html>";
 
     UIImage *rotatedImage = [GlobalUtility rotateImage:emailImage rotation:UIImageOrientationUp];
     NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(rotatedImage, 1.0)];
