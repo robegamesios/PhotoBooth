@@ -13,6 +13,7 @@
 		56399F541DE28FD000132F14 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 56399F531DE28FD000132F14 /* ViewController2.m */; };
 		56399F571DE2BE5300132F14 /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 56399F561DE2BE5300132F14 /* ViewController3.m */; };
 		56399F5A1DE2C54400132F14 /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 56399F591DE2C54400132F14 /* ViewController4.m */; };
+		56399F5D1DE2FCF400132F14 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56399F5C1DE2FCF400132F14 /* InfoViewController.m */; };
 		56476E011DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */; };
 		56476E021DB8A01F003F209F /* Doctor Soos Light 1.1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */; };
 		565F12871DACB76F00B96C52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F12861DACB76F00B96C52 /* main.m */; };
@@ -40,6 +41,8 @@
 		56399F561DE2BE5300132F14 /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		56399F581DE2C54400132F14 /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
 		56399F591DE2C54400132F14 /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
+		56399F5B1DE2FCF400132F14 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		56399F5C1DE2FCF400132F14 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		56476DFF1DB8A01F003F209F /* Doctor Soos Bold 2.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Bold 2.1.ttf"; sourceTree = "<group>"; };
 		56476E001DB8A01F003F209F /* Doctor Soos Light 1.1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Doctor Soos Light 1.1.ttf"; sourceTree = "<group>"; };
 		565F12821DACB76F00B96C52 /* PhotoBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +118,8 @@
 				565F12891DACB76F00B96C52 /* AppDelegate.m */,
 				562455831DB49EC40071A4B3 /* GlobalUtility.h */,
 				562455841DB49EC40071A4B3 /* GlobalUtility.m */,
+				56399F5B1DE2FCF400132F14 /* InfoViewController.h */,
+				56399F5C1DE2FCF400132F14 /* InfoViewController.m */,
 				5624558C1DB4C3560071A4B3 /* IntroViewController.h */,
 				5624558D1DB4C3560071A4B3 /* IntroViewController.m */,
 				562455891DB4A6A00071A4B3 /* SendPhotoViewController.h */,
@@ -288,6 +293,7 @@
 				565F12871DACB76F00B96C52 /* main.m in Sources */,
 				56399F571DE2BE5300132F14 /* ViewController3.m in Sources */,
 				562455851DB49EC40071A4B3 /* GlobalUtility.m in Sources */,
+				56399F5D1DE2FCF400132F14 /* InfoViewController.m in Sources */,
 				56399F5A1DE2C54400132F14 /* ViewController4.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

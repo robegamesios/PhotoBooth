@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "iRate.h"
+#import "Harpy.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +16,27 @@
 
 @implementation AppDelegate
 
++ (void)initialize {
+    //configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 5;
+    [iRate sharedInstance].usesUntilPrompt = 10;
+
+    [iRate sharedInstance].messageTitle = NSLocalizedString(@"Rate My App", @"iRate message title");
+    [iRate sharedInstance].message = NSLocalizedString(@"If you like Party Photobooth, please take a moment to rate it.", @"iRate message");
+    [iRate sharedInstance].cancelButtonLabel = NSLocalizedString(@"No thanks", @"iRate decline button");
+    [iRate sharedInstance].remindButtonLabel = NSLocalizedString(@"Remind me later", @"iRate remind button");
+    [iRate sharedInstance].rateButtonLabel = NSLocalizedString(@"Sure, I'll rate it now", @"iRate accept button");
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //RE: Make splash screen stay while loading info
+    [NSThread sleepForTimeInterval:1.5f];
+
+    //RE:Check for app update on appstore
+    [[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
+    [[Harpy sharedInstance] checkVersion];
+
     return YES;
 }
 

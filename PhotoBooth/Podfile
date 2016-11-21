@@ -13,6 +13,8 @@ target 'PhotoBooth' do
   pod 'Realm', '2.0.2'
   pod 'DRColorPicker', '1.0.11'
   pod 'MMPickerView', '0.0.1'
+  pod 'iRate', '1.11.5'
+  pod 'Harpy', '4.0.5'
 
 
 end
