@@ -50,7 +50,7 @@
 
     emailDialog.mailComposeDelegate = self;
 
-    NSString *htmlMsg = @"<html><body><p>Happy Thanksgiving!<a>http://itunes.apple.com/us/app/apple-store/id1178580289?mt=8<a></p></body></html>";
+    NSString *htmlMsg = @"<html><body><p>Happy Holidays!<a>http://itunes.apple.com/us/app/apple-store/id1178580289?mt=8<a></p></body></html>";
 
     UIImage *rotatedImage = [GlobalUtility rotateImage:emailImage rotation:UIImageOrientationUp];
     NSData *jpegData = [NSData dataWithData:UIImageJPEGRepresentation(rotatedImage, 1.0)];
@@ -62,7 +62,7 @@
         [emailDialog addAttachmentData:jpegData mimeType:@"image/jpeg" fileName:fileName];
     }
 
-    [emailDialog setSubject:@"Thanksgiving Party Photobooth pic"];
+    [emailDialog setSubject:@"Holiday Party Photobooth pic"];
     [emailDialog setMessageBody:htmlMsg isHTML:YES];
 
     [self presentViewController:emailDialog animated:YES completion:nil];

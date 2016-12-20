@@ -21,7 +21,6 @@ static int const SucceedingTimerLimit = 2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview3;
-@property (weak, nonatomic) IBOutlet UIImageView *imageViewPreview4;
 @property (weak, nonatomic) IBOutlet UIView *flashView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLookHere;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
@@ -96,7 +95,7 @@ static int const SucceedingTimerLimit = 2;
 }
 
 - (void)setupImageViews {
-    UIColor *borderColor = [UIColor whiteColor];
+    UIColor *borderColor = [UIColor redColor];
     float borderWidth = 10.f;
 
     self.cameraView.layer.borderColor = borderColor.CGColor;
@@ -110,9 +109,6 @@ static int const SucceedingTimerLimit = 2;
 
     self.imageViewPreview3.layer.borderColor = borderColor.CGColor;
     self.imageViewPreview3.layer.borderWidth = borderWidth;
-
-    self.imageViewPreview4.layer.borderColor = borderColor.CGColor;
-    self.imageViewPreview4.layer.borderWidth = borderWidth;
 }
 
 - (void)hideElements:(BOOL)status {
@@ -123,7 +119,6 @@ static int const SucceedingTimerLimit = 2;
     self.imageViewPreview.hidden = status;
     self.imageViewPreview2.hidden = status;
     self.imageViewPreview3.hidden = status;
-    self.imageViewPreview4.hidden = status;
     self.placeholderLabel1.hidden = status;
     self.placeholderLabel2.hidden = status;
     self.placeholderLabel3.hidden = status;
@@ -279,19 +274,12 @@ static int const SucceedingTimerLimit = 2;
 
         case 2:
             self.placeholderLabel3.hidden = YES;
-            self.imageViewPreview3.image = rotatedImage;
-            [self takePhotoBlock];
-            counter = 3;
-            break;
-
-        case 3: {
             self.cameraView.hidden = YES;
-            self.imageViewPreview4.image = rotatedImage;
+            self.imageViewPreview3.image = rotatedImage;
             counter = 0;
-
+            
             [self savePhotoImage];
             break;
-        }
 
         default:
             break;

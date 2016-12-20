@@ -96,7 +96,7 @@ static int const SucceedingTimerLimit = 2;
 }
 
 - (void)setupImageViews {
-    UIColor *borderColor = [UIColor whiteColor];
+    UIColor *borderColor = [UIColor redColor];
     float borderWidth = 10.f;
 
     self.cameraView.layer.borderColor = borderColor.CGColor;
