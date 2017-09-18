@@ -86,7 +86,7 @@ static int const SucceedingTimerLimit = 2;
     self.placeholderLabel2.transform = CGAffineTransformMakeRotation(3.14f/2);
     self.placeholderLabel3.transform = CGAffineTransformMakeRotation(3.14f/2);
     self.imageViewPreview3.transform = CGAffineTransformMakeRotation(3.14f/6);
-    self.imageViewPreview4.transform = CGAffineTransformMakeRotation(-3.14f/6);
+    self.imageViewPreview4.transform = CGAffineTransformMakeRotation(-3.14f/8);
 
     self.timerLimit = StartTimerLimit;
 }

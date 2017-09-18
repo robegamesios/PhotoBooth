@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPD-w6-si8">
-                                <rect key="frame" x="60" y="393" width="168" height="128"/>
+                                <rect key="frame" x="52" y="393" width="184" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="lEP-kA-Q5p"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92688029999999999" green="0.8393806815" blue="0.98955708740000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93512910604476929" green="0.50187671184539795" blue="0.18599623441696167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rMF-ko-dNv" firstAttribute="leading" secondItem="Weq-xM-6Jt" secondAttribute="trailing" constant="-70" id="2Xk-aD-1JE"/>
                             <constraint firstItem="AjR-C1-7Vb" firstAttribute="top" secondItem="Weq-xM-6Jt" secondAttribute="bottom" id="3Ib-kO-efa"/>
@@ -393,7 +393,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.92688029999999999" green="0.8393806815" blue="0.98955708740000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93512910604476929" green="0.50187671184539795" blue="0.18599623441696167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5X9-9Z-dws" secondAttribute="trailing" id="Gpk-jb-ci1"/>
                             <constraint firstItem="uU9-LJ-uFC" firstAttribute="centerY" secondItem="P30-p9-lum" secondAttribute="centerY" id="MxX-8c-jYL"/>
@@ -564,6 +564,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR6-uj-ika">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2" translatesAutoresizingMaskIntoConstraints="NO" id="rme-uw-tQg" userLabel="bg">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
@@ -575,7 +579,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="xpn-0N-gdY">
-                                <rect key="frame" x="118.5" y="100" width="371" height="497"/>
+                                <rect key="frame" x="103.5" y="100" width="371" height="497"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xpn-0N-gdY" secondAttribute="height" multiplier="1936:2592" id="62H-Vj-6dD"/>
@@ -625,10 +629,6 @@
                                 <color key="textColor" red="0.0" green="0.89929424349999998" blue="0.0086815898690000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR6-uj-ika">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92688029999999999" green="0.8393806815" blue="0.98955708740000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -645,7 +645,7 @@
                             <constraint firstItem="eOK-h8-UTA" firstAttribute="top" secondItem="Sxp-ua-Y9M" secondAttribute="bottom" constant="48" id="Olt-8z-1k2"/>
                             <constraint firstItem="seq-bS-Qgx" firstAttribute="top" secondItem="Sxp-ua-Y9M" secondAttribute="bottom" constant="10" id="QrR-Uw-5iq"/>
                             <constraint firstItem="ewk-VL-dlW" firstAttribute="leading" secondItem="8OP-Ys-IYm" secondAttribute="leading" constant="97" id="SDl-YB-DKX"/>
-                            <constraint firstItem="xpn-0N-gdY" firstAttribute="centerX" secondItem="Xio-xx-VqS" secondAttribute="centerX" constant="-80" id="VAx-Up-pwx"/>
+                            <constraint firstItem="xpn-0N-gdY" firstAttribute="centerX" secondItem="Xio-xx-VqS" secondAttribute="centerX" constant="-95" id="VAx-Up-pwx"/>
                             <constraint firstItem="nR6-uj-ika" firstAttribute="top" secondItem="rme-uw-tQg" secondAttribute="top" id="WJS-YF-gsZ"/>
                             <constraint firstItem="Hjd-5A-ZsL" firstAttribute="centerX" secondItem="eOK-h8-UTA" secondAttribute="centerX" id="Xku-LQ-qi3"/>
                             <constraint firstItem="ewk-VL-dlW" firstAttribute="centerY" secondItem="eOK-h8-UTA" secondAttribute="centerY" constant="77" id="biY-lo-GSc"/>
@@ -927,8 +927,8 @@
     </scenes>
     <resources>
         <image name="1" width="320" height="240"/>
-        <image name="2" width="168" height="128"/>
-        <image name="3" width="168" height="128"/>
+        <image name="2" width="184" height="146"/>
+        <image name="3" width="184" height="146"/>
         <image name="4" width="320" height="240"/>
         <image name="bg2" width="615" height="820"/>
         <image name="bg3" width="768" height="1024"/>
