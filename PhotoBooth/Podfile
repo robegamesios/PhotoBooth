@@ -10,7 +10,7 @@ target 'PhotoBooth' do
   pod 'AWCameraView', '0.5.1'
   pod 'YCSlideShowImageView', '1.1.1'
   pod 'DLPhotoPicker', '1.0.3'
-  pod 'Realm', '2.0.2'
+  pod 'Realm', '3.0.2'
   pod 'DRColorPicker', '1.0.11'
   pod 'MMPickerView', '0.0.1'
   pod 'iRate', '1.11.5'
