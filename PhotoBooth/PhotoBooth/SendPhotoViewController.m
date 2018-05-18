@@ -30,7 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    self.imageViewThankYou.image = self.photoImage;
+//    self.imageViewThankYou.image = self.photoImage;
 }
 
 // Lock orientation
