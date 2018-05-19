@@ -135,7 +135,7 @@
     self.menuView.hidden = YES;
 
     //RE:TODO
-    self.imageViewThankYou.image = [UIImage imageNamed:@"thankYou"];
+//    self.imageViewThankYou.image = [UIImage imageNamed:@"thankYou"];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         weakSelf.imageViewThankYou.hidden = YES;
