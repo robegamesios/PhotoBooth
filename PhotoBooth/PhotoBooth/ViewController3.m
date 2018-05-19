@@ -85,14 +85,14 @@ static int const SucceedingTimerLimit = 2;
 }
 
 - (void)setupImageViews {
-//    UIColor *borderColor = [UIColor whiteColor];
-//    float borderWidth = 10.f;
-//
-//    self.cameraView.layer.borderColor = borderColor.CGColor;
-//    self.cameraView.layer.borderWidth = borderWidth;
-//
-//    self.imageViewPreview4.layer.borderColor = borderColor.CGColor;
-//    self.imageViewPreview4.layer.borderWidth = borderWidth;
+    UIColor *borderColor = [UIColor magentaColor];
+    float borderWidth = 10.f;
+
+    self.cameraView.layer.borderColor = borderColor.CGColor;
+    self.cameraView.layer.borderWidth = borderWidth;
+
+    self.imageViewPreview4.layer.borderColor = borderColor.CGColor;
+    self.imageViewPreview4.layer.borderWidth = borderWidth;
 }
 
 - (void)hideElements:(BOOL)status {
